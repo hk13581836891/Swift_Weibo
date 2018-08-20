@@ -8,16 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D7B212A66FA00C7886D /* AppDelegate.swift */; };
-		D3934D7E212A66FA00C7886D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D7D212A66FA00C7886D /* ViewController.swift */; };
-		D3934D83212A66FD00C7886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3934D82212A66FD00C7886D /* Assets.xcassets */; };
+		D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9D212AA23C00C7886D /* MainViewController.swift */; };
+		D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9F212AA28400C7886D /* HomeTableViewController.swift */; };
+		D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA1212AA29C00C7886D /* MessageTableViewController.swift */; };
+		D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */; };
+		D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */; };
+		D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3934DA7212AA36800C7886D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D3934D78212A66FA00C7886D /* Swift_Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3934D7B212A66FA00C7886D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3934D7D212A66FA00C7886D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D3934D82212A66FD00C7886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D3934D87212A66FD00C7886D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3934D9D212AA23C00C7886D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3934D9F212AA28400C7886D /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		D3934DA1212AA29C00C7886D /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewController.swift; sourceTree = "<group>"; };
+		D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		D3934DA7212AA36800C7886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +57,95 @@
 		D3934D7A212A66FA00C7886D /* Swift_Weibo */ = {
 			isa = PBXGroup;
 			children = (
+				D3934D8F212A9E7F00C7886D /* Classes */,
 				D3934D7B212A66FA00C7886D /* AppDelegate.swift */,
-				D3934D7D212A66FA00C7886D /* ViewController.swift */,
-				D3934D82212A66FD00C7886D /* Assets.xcassets */,
-				D3934D87212A66FD00C7886D /* Info.plist */,
+				D3934DA7212AA36800C7886D /* Assets.xcassets */,
 			);
 			path = Swift_Weibo;
+			sourceTree = "<group>";
+		};
+		D3934D8F212A9E7F00C7886D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D3934D93212A9E7F00C7886D /* View */,
+				D3934D90212A9E7F00C7886D /* ViewModel */,
+				D3934D91212A9E7F00C7886D /* Tools */,
+				D3934D92212A9E7F00C7886D /* Model */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D3934D90212A9E7F00C7886D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D3934D91212A9E7F00C7886D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D3934D92212A9E7F00C7886D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3934D93212A9E7F00C7886D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3934D98212A9E7F00C7886D /* Main */,
+				D3934D94212A9E7F00C7886D /* Home */,
+				D3934D96212A9E7F00C7886D /* Message */,
+				D3934D95212A9E7F00C7886D /* Discovery */,
+				D3934D97212A9E7F00C7886D /* Profile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3934D94212A9E7F00C7886D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3934D9F212AA28400C7886D /* HomeTableViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D3934D95212A9E7F00C7886D /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		D3934D96212A9E7F00C7886D /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				D3934DA1212AA29C00C7886D /* MessageTableViewController.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		D3934D97212A9E7F00C7886D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D3934D98212A9E7F00C7886D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D3934D9D212AA23C00C7886D /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,7 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3934D83212A66FD00C7886D /* Assets.xcassets in Resources */,
+				D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3934D7E212A66FA00C7886D /* ViewController.swift in Sources */,
+				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
+				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
+				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
+				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
+				D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
