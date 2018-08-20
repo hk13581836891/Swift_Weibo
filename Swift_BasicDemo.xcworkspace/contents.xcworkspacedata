@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Swift_Weibo/Swift_Weibo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftTableViewDemo2/SwiftTableViewDemo2.xcodeproj">
    </FileRef>
    <FileRef
