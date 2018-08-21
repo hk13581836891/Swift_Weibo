@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */; };
 		D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D7B212A66FA00C7886D /* AppDelegate.swift */; };
 		D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9D212AA23C00C7886D /* MainViewController.swift */; };
 		D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9F212AA28400C7886D /* HomeTableViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D3934D78212A66FA00C7886D /* Swift_Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3934D7B212A66FA00C7886D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3934D9D212AA23C00C7886D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D35C9024212BB2CB0096BFF6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D3934D6F212A66FA00C7886D = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +95,7 @@
 		D3934D91212A9E7F00C7886D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D35C9024212BB2CB0096BFF6 /* Extension */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -223,6 +234,7 @@
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
 				D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */,
+				D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,19 +16,15 @@ class MainViewController: UITabBarController {
         setUpcomposeButton()
     }
     
-    lazy var composeButton:UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "tabbar_compose_icon_add"), for: UIControlState.normal)
-        btn.setImage(UIImage(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted)
-        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: UIControlState.normal)
-        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted)
-//        btn.sizeToFit()
-        btn.backgroundColor = UIColor.yellow
-        return btn
-    }()
+    lazy var composeButton:UIButton = UIButton(
+        imageName: "tabbar_compose_icon_add",
+        backImageName: "tabbar_compose_button")
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let w:CGFloat = (tabBar.bounds.width / CGFloat( (tabBar.items?.count)!) + 2.0)
+        composeButton.frame = CGRect(origin: CGPoint(x: tabBar.bounds.width/2 - w/2, y: 0), size: CGSize(width: w, height:tabBar.bounds.height))
         tabBar.bringSubview(toFront: composeButton)
     }
     
@@ -39,8 +35,7 @@ extension MainViewController{
     
     func setUpcomposeButton()  {
 
-        let w:CGFloat = (tabBar.bounds.width / 5.0 + 2.0)
-        composeButton.frame = CGRect(origin: CGPoint(x: tabBar.bounds.width/2 - w/2, y: 0), size: CGSize(width: w, height:tabBar.bounds.height))
+       
         tabBar.addSubview(composeButton)
     }
  
