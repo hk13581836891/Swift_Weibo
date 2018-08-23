@@ -21,4 +21,18 @@ extension UIButton{
         //会根据背景图片的大小调整尺寸
         sizeToFit()
     }
+    
+    /// 遍历构造函数
+    ///
+    /// - Parameters:
+    ///   - title: title
+    ///   - color: textColor
+    ///   - imageName: backImageName
+    convenience init(title:String, color:UIColor, imageName:String){
+        self.init()
+        
+        setTitle(title, for: UIControlState.normal)
+        setTitleColor(color, for: UIControlState.normal)
+        setBackgroundImage(UIImage(named: imageName), for: UIControlState.normal)
+    }
 }

@@ -8,11 +8,30 @@
 
 import UIKit
 
+//通过代理方法传递访客视图监听方法
+/// 访客视图的协议
+protocol VisitorViewDelegate: NSObjectProtocol {
+    //注册
+    func visitorViewDidRegister()
+    //登录
+    func visitorViewDidLogin()
+}
+
 ///访客视图 - 处理用户未登录的界面
 class VisitorView: UIView {
 
-    //MARK: - 设置视图信息
+    /// 代理
+    weak var delegate: VisitorViewDelegate?
     
+    //MARK: - 监听方法
+    @objc private func registerBtnClick() {
+        delegate?.visitorViewDidRegister()
+    }
+    @objc private func loginBtnClick() {
+        delegate?.visitorViewDidLogin()
+    }
+    
+    //MARK: - 设置视图信息
     /// 设置视图信息
     ///
     /// - Parameters:
@@ -65,35 +84,12 @@ class VisitorView: UIView {
     }
     //MARK: - 加载控件
     //UIImageView 使用 image:构造函数创建的 imageView 默认的就是 image的大小
-    private lazy var iconView:UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
-    private lazy var maskIconView:UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
-    private lazy var homeIconImage:UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
-    private lazy var messageLab:UILabel = {
-       let label = UILabel()
-        label.text = ""
-        label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.center
-        return label
-    }()
-    private lazy var registerBtn:UIButton = {
-       
-        let btn = UIButton()
-        btn.setTitle("注册", for: UIControlState.normal)
-        btn.setTitleColor(UIColor.orange, for: UIControlState.normal)
-        btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: UIControlState.normal)
-        return btn
-    }()
-    private lazy var loginBtn:UIButton = {
-        
-        let btn = UIButton()
-        btn.setTitle("登录", for: UIControlState.normal)
-        btn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
-        btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: UIControlState.normal)
-        return btn
-    }()
-    
+    private lazy var iconView:UIImageView = UIImageView(imageName: "visitordiscover_feed_image_smallicon")
+    private lazy var maskIconView:UIImageView = UIImageView(imageName: "visitordiscover_feed_mask_smallicon")
+    private lazy var homeIconImage:UIImageView = UIImageView(imageName: "visitordiscover_feed_image_house")
+    private lazy var messageLab:UILabel = UILabel(title: "")
+    lazy var registerBtn:UIButton = UIButton(title: "注册", color: UIColor.orange, imageName: "common_button_white_disable")
+    lazy var loginBtn:UIButton = UIButton(title: "登录", color: UIColor.darkGray, imageName: "common_button_white_disable")
 }
 
  extension VisitorView
@@ -106,6 +102,8 @@ class VisitorView: UIView {
         addSubview(messageLab)
         addSubview(registerBtn)
         addSubview(loginBtn)
+        registerBtn.addTarget(self, action: #selector(registerBtnClick), for: UIControlEvents.touchUpInside)
+        loginBtn.addTarget(self, action: #selector(loginBtnClick), for: UIControlEvents.touchUpInside)
         
         //设置背景颜色 - 灰度图 R = G = B 在 UI 元素中，大多都使用灰度图或者纯色图（安全色- 在不同设备上视觉效果一致）
         backgroundColor = UIColor(white: 237.0 / 255.0, alpha: 1)

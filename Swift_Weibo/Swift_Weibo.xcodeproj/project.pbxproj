@@ -10,6 +10,9 @@
 		D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */; };
 		D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */; };
 		D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C902B212BEB2B0096BFF6 /* VisitorView.swift */; };
+		D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928321212E8C7500D02D17 /* UILable+Extension.swift */; };
+		D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */; };
+		D3928326212EB61500D02D17 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928325212EB61500D02D17 /* Common.swift */; };
 		D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D7B212A66FA00C7886D /* AppDelegate.swift */; };
 		D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9D212AA23C00C7886D /* MainViewController.swift */; };
 		D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934D9F212AA28400C7886D /* HomeTableViewController.swift */; };
@@ -23,6 +26,9 @@
 		D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
 		D35C902B212BEB2B0096BFF6 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		D3928321212E8C7500D02D17 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
+		D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		D3928325212EB61500D02D17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		D3934D78212A66FA00C7886D /* Swift_Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3934D7B212A66FA00C7886D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3934D9D212AA23C00C7886D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */,
+				D3928321212E8C7500D02D17 /* UILable+Extension.swift */,
+				D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D35C9024212BB2CB0096BFF6 /* Extension */,
+				D3928325212EB61500D02D17 /* Common.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -244,10 +253,13 @@
 			files = (
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
+				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
+				D3928326212EB61500D02D17 /* Common.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
+				D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */,
 				D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */,
 				D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */,
 				D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */,

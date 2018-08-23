@@ -7,6 +7,11 @@
 //
 
 import UIKit
+/**
+ 传递点击事件
+ 1、使用代理
+ 2、通过监听方法
+ */
 /*
  提问：1、应用程序中创建了几个 visitorView?
         如果底部标签都被点击查看过则创建4个，每个控制器各自有各自的访客视图；如果启动后不做任何操作只创建一个
@@ -29,10 +34,35 @@ class VisitorTableViewController: UITableViewController {
 
     func setupVisitorView()  {
         visitorView = VisitorView()
+        //1、设置代理
+//        visitorView?.delegate = self
+        //2、直接添加监听方法
+        visitorView?.registerBtn.addTarget(self, action: #selector(registerBtnClick), for: UIControlEvents.touchUpInside)
+        visitorView?.loginBtn.addTarget(self, action: #selector(loginBtnClick), for: UIControlEvents.touchUpInside)
+        
+        //设置导航栏按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.plain, target: self, action: #selector(registerBtnClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.plain, target: self, action: #selector(loginBtnClick))
+        
         view = visitorView
+    }
+    @objc func registerBtnClick()  {
+        print("zhuce")
+    }
+    @objc func loginBtnClick()  {
+        print("登录")
     }
 }
 
+extension VisitorTableViewController:VisitorViewDelegate {
+    
+    func visitorViewDidRegister() {
+        print("注册")
+    }
+    func visitorViewDidLogin() {
+        print("登录")
+    }
+}
 
 
 

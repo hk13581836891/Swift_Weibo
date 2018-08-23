@@ -25,9 +25,18 @@ class MainViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let w:CGFloat = (tabBar.bounds.width / CGFloat( (tabBar.items?.count)!) + 2.0)
-        composeButton.frame = CGRect(origin: CGPoint(x: tabBar.bounds.width/2 - w/2, y: 0), size: CGSize(width: w, height:tabBar.bounds.height))
+        //调整按钮位置方法1
+//        let w:CGFloat = (tabBar.bounds.width / CGFloat( (tabBar.items?.count)!) + 2.0)
+//        composeButton.frame = CGRect(origin: CGPoint(x: tabBar.bounds.width/2 - w/2, y: 0), size: CGSize(width: w, height:tabBar.bounds.height))
+//        tabBar.bringSubview(toFront: composeButton)
+        
+        //调整按钮位置方法2
+        let count = childViewControllers.count
+        let w = tabBar.bounds.width / CGFloat(count)
+//        composeButton.frame = CGRect(origin: CGPoint(x: w * 2 - 2, y: 0), size: CGSize(width: w + 4, height: tabBar.bounds.height)).insetBy(dx: 0, dy: -20)
+        composeButton.frame = tabBar.bounds.insetBy(dx: w * 2 - 2, dy: 0)
         tabBar.bringSubview(toFront: composeButton)
+        
     }
     
     //MARK: - 懒加载控件
@@ -38,6 +47,9 @@ class MainViewController: UITabBarController {
 }
 
 //MARK: - 设置界面
+//extension 类似于 oc的分类，分类中不能定义‘存储型’属性，可以定义‘计算型’属性，即 readonly属性
+//swift 中同样如此
+//extension 主要用于做代码的分类
 extension MainViewController{
     
     func setUpcomposeButton()  {

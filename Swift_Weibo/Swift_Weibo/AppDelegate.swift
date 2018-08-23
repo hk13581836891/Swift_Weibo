@@ -13,9 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        setupAppearance()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.rootViewController = MainViewController()
@@ -23,6 +26,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    //全局外观设置 - 在很多应用程序中，都会在 AppDelegate 中设置所有需要控件的全局外观
+    func setupAppearance()  {
+        //修改导航栏的全局外观 - 要在控件创建之前设置，一经设置全局有效
+        UINavigationBar.appearance().tintColor = AppearanceTintColor
+        UITabBar.appearance().tintColor = AppearanceTintColor
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
