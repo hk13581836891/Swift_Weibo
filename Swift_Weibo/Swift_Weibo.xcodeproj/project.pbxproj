@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3453559212F9F7E000E9BC7 /* SoundTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3453558212F9F7E000E9BC7 /* SoundTools.swift */; };
+		D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */ = {isa = PBXBuildFile; fileRef = D345355E212FF201000E9BC7 /* Swift_OCHybrid.m */; };
 		D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */; };
 		D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */; };
 		D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C902B212BEB2B0096BFF6 /* VisitorView.swift */; };
@@ -23,13 +25,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D3453558212F9F7E000E9BC7 /* SoundTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTools.swift; sourceTree = "<group>"; };
+		D345355C212FF200000E9BC7 /* Swift_Weibo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift_Weibo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D345355D212FF201000E9BC7 /* Swift_OCHybrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_OCHybrid.h; sourceTree = "<group>"; };
+		D345355E212FF201000E9BC7 /* Swift_OCHybrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Swift_OCHybrid.m; sourceTree = "<group>"; };
 		D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
 		D35C902B212BEB2B0096BFF6 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		D3928321212E8C7500D02D17 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D3928325212EB61500D02D17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		D3934D78212A66FA00C7886D /* Swift_Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3934D78212A66FA00C7886D /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3934D7B212A66FA00C7886D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3934D9D212AA23C00C7886D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D3934D9F212AA28400C7886D /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +86,7 @@
 		D3934D79212A66FA00C7886D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3934D78212A66FA00C7886D /* Swift_Weibo.app */,
+				D3934D78212A66FA00C7886D /* Weibo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +96,10 @@
 			children = (
 				D3934D8F212A9E7F00C7886D /* Classes */,
 				D3934D7B212A66FA00C7886D /* AppDelegate.swift */,
+				D345355D212FF201000E9BC7 /* Swift_OCHybrid.h */,
+				D345355E212FF201000E9BC7 /* Swift_OCHybrid.m */,
 				D3934DA7212AA36800C7886D /* Assets.xcassets */,
+				D345355C212FF200000E9BC7 /* Swift_Weibo-Bridging-Header.h */,
 			);
 			path = Swift_Weibo;
 			sourceTree = "<group>";
@@ -118,6 +127,7 @@
 			children = (
 				D35C9024212BB2CB0096BFF6 /* Extension */,
 				D3928325212EB61500D02D17 /* Common.swift */,
+				D3453558212F9F7E000E9BC7 /* SoundTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -199,7 +209,7 @@
 			);
 			name = Swift_Weibo;
 			productName = Swift_Weibo;
-			productReference = D3934D78212A66FA00C7886D /* Swift_Weibo.app */;
+			productReference = D3934D78212A66FA00C7886D /* Weibo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -214,6 +224,7 @@
 				TargetAttributes = {
 					D3934D77212A66FA00C7886D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -254,6 +265,7 @@
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
+				D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
@@ -263,6 +275,7 @@
 				D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */,
 				D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */,
 				D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */,
+				D3453559212F9F7E000E9BC7 /* SoundTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
@@ -397,7 +411,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hk.Swift-Weibo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Weibo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift_Weibo/Swift_Weibo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -408,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
@@ -417,7 +434,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hk.Swift-Weibo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Weibo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift_Weibo/Swift_Weibo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

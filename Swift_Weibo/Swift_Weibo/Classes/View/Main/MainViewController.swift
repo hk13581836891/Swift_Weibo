@@ -53,7 +53,8 @@ class MainViewController: UITabBarController {
 extension MainViewController{
     
     func setUpcomposeButton()  {
-
+        Swift_OCHybrid.sharedHybird()!.testMethod()
+        print(Swift_OCHybrid.sharedHybird().hybrid!)
         tabBar.addSubview(composeButton)
         composeButton.addTarget(self, action: #selector(composeButtonClick), for: UIControlEvents.touchUpInside)
     }
