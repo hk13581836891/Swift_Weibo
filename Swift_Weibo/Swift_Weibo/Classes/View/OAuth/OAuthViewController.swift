@@ -77,10 +77,15 @@ extension OAuthViewController:UIWebViewDelegate {
         
         //4、加载 accessToken
         NetworkTools.sharedTools.loadAccessToken(code: code) { (result, error) in
+            //1>判断错误
             if error != nil {
                 print("获取 AccessToken 失败")
             }
             print(result!)
+            //2>输出结果 - 在 swift中任何 Any 在使用前，必须转换类型 -> as ?/类型
+            let accout = UserAccount(dict: result as! [String : Any])
+            print(accout)
+            
         }
         return false
     }

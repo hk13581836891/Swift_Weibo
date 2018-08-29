@@ -13,6 +13,7 @@
 		D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */; };
 		D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C902B212BEB2B0096BFF6 /* VisitorView.swift */; };
 		D383215921368977003FE31E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383215821368977003FE31E /* String+Extension.swift */; };
+		D383215D2136AC32003FE31E /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383215C2136AC32003FE31E /* UserAccount.swift */; };
 		D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928321212E8C7500D02D17 /* UILable+Extension.swift */; };
 		D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */; };
 		D3928326212EB61500D02D17 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928325212EB61500D02D17 /* Common.swift */; };
@@ -40,6 +41,7 @@
 		D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
 		D35C902B212BEB2B0096BFF6 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		D383215821368977003FE31E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D383215C2136AC32003FE31E /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		D3928321212E8C7500D02D17 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D3928325212EB61500D02D17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 			path = Visitor;
 			sourceTree = "<group>";
 		};
+		D383215B2136ABFA003FE31E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D383215C2136AC32003FE31E /* UserAccount.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D3934D6F212A66FA00C7886D = {
 			isa = PBXGroup;
 			children = (
@@ -138,19 +148,11 @@
 		D3934D8F212A9E7F00C7886D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D3934D93212A9E7F00C7886D /* View */,
-				D3934D90212A9E7F00C7886D /* ViewModel */,
 				D3934D91212A9E7F00C7886D /* Tools */,
-				D3934D92212A9E7F00C7886D /* Model */,
+				D3934D93212A9E7F00C7886D /* View */,
+				D383215B2136ABFA003FE31E /* Model */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		D3934D90212A9E7F00C7886D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D3934D91212A9E7F00C7886D /* Tools */ = {
@@ -162,13 +164,6 @@
 				D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */,
 			);
 			path = Tools;
-			sourceTree = "<group>";
-		};
-		D3934D92212A9E7F00C7886D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D3934D93212A9E7F00C7886D /* View */ = {
@@ -368,6 +363,7 @@
 			files = (
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
+				D383215D2136AC32003FE31E /* UserAccount.swift in Sources */,
 				D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
 				D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */,

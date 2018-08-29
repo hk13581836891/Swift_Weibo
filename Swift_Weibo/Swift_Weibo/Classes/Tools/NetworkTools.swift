@@ -69,6 +69,8 @@ extension NetworkTools{
              finished(result, nil)
         }
         let failure = { (task: URLSessionDataTask?, error:Error) in
+            
+            print(error)
             finished(nil, error)
         }
         
