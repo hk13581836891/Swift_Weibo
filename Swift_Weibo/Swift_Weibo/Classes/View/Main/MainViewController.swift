@@ -15,10 +15,6 @@ class MainViewController: UITabBarController {
     //MARK: - 监听方法
     @objc func composeButtonClick()  {
         print("dd")
-        
-        NetworkTools.sharedTools.request(method: RequestMethod.POST ,URLString: "http://httpbin.org/post", parameters: ["name":"wang"]) { (result, error) in
-            print(result ?? "", error ?? "")
-        }
    
     }
     

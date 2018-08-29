@@ -51,6 +51,10 @@ class VisitorTableViewController: UITableViewController {
     }
     @objc func loginBtnClick()  {
         print("登录")
+        let vc = OAuthViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        
+        present(nav, animated: true, completion: nil)
     }
 }
 

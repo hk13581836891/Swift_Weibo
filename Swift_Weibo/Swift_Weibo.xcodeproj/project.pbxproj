@@ -12,6 +12,7 @@
 		D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */; };
 		D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */; };
 		D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C902B212BEB2B0096BFF6 /* VisitorView.swift */; };
+		D383215921368977003FE31E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383215821368977003FE31E /* String+Extension.swift */; };
 		D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928321212E8C7500D02D17 /* UILable+Extension.swift */; };
 		D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */; };
 		D3928326212EB61500D02D17 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928325212EB61500D02D17 /* Common.swift */; };
@@ -23,6 +24,7 @@
 		D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */; };
 		D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3934DA7212AA36800C7886D /* Assets.xcassets */; };
 		D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */; };
+		D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */; };
 		D698A04B6ACF6E0CD092586A /* Pods_Swift_Weibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A1E5B17873A5FC68CC2D45 /* Pods_Swift_Weibo.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,7 @@
 		D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D35C9029212BE6020096BFF6 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
 		D35C902B212BEB2B0096BFF6 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		D383215821368977003FE31E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D3928321212E8C7500D02D17 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D3928325212EB61500D02D17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		D3934DA7212AA36800C7886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 				D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */,
 				D3928321212E8C7500D02D17 /* UILable+Extension.swift */,
 				D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */,
+				D383215821368977003FE31E /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 		D3934D93212A9E7F00C7886D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D3A42D0D2135435E0049A4A0 /* OAuth */,
 				D3934D98212A9E7F00C7886D /* Main */,
 				D3934D94212A9E7F00C7886D /* Home */,
 				D3934D96212A9E7F00C7886D /* Message */,
@@ -217,6 +223,14 @@
 				D3934D9D212AA23C00C7886D /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D3A42D0D2135435E0049A4A0 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,9 +370,11 @@
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
 				D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
+				D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */,
 				D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
+				D383215921368977003FE31E /* String+Extension.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
@@ -498,7 +514,10 @@
 				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hk.Swift-Weibo";
 				PRODUCT_NAME = Weibo;
 				SWIFT_OBJC_BRIDGING_HEADER = "Swift_Weibo/Swift_Weibo-Bridging-Header.h";
@@ -519,7 +538,10 @@
 				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hk.Swift-Weibo";
 				PRODUCT_NAME = Weibo;
 				SWIFT_OBJC_BRIDGING_HEADER = "Swift_Weibo/Swift_Weibo-Bridging-Header.h";
