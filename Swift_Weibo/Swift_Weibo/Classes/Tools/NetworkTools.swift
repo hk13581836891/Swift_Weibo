@@ -35,6 +35,25 @@ class NetworkTools: AFHTTPSessionManager {
     }()
     
 }
+
+//MARK: - 用户相关方法
+extension NetworkTools {
+    
+    /// 加载用户信息
+    ///
+    /// - Parameters:
+    ///   - uid: uid
+    ///   - accessToken:accessToken
+    ///   - finish: 完成回调
+    /// - see: [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
+    func loadUserInfo(uid:String, accessToken:String, finish:@escaping HKRequestCallBack) {
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let params = ["uid":uid, "access_token":accessToken]
+        
+        request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
+    }
+}
+
 //MARK: - OAuth 相关方法
 extension NetworkTools {
     /// OAuth 授权 url

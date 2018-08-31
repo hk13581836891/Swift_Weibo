@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //测试归档的用户账户
+        print(UserAccountViewModel.sharedUserAccount.userLogon)
         setupAppearance()
         
         window = UIWindow(frame: UIScreen.main.bounds)
