@@ -34,5 +34,7 @@ extension UIButton{
         setTitle(title, for: UIControlState.normal)
         setTitleColor(color, for: UIControlState.normal)
         setBackgroundImage(UIImage(named: imageName), for: UIControlState.normal)
+        
+        sizeToFit()
     }
 }

@@ -43,12 +43,17 @@ extension NetworkTools {
     ///
     /// - Parameters:
     ///   - uid: uid
-    ///   - accessToken:accessToken
     ///   - finish: 完成回调
     /// - see: [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
     func loadUserInfo(uid:String, finish:@escaping HKRequestCallBack) {
         let urlString = "https://api.weibo.com/2/users/show.json"
-        let params = ["uid":uid, "access_token":UserAccountViewModel.sharedUserAccount.accessToken!]
+        
+        guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
+            //通知调用方，token 无效
+            finish(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
+            return
+        }
+        let params = ["uid":uid, "access_token":accessToken]
         
         request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }

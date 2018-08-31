@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 //通过代理方法传递访客视图监听方法
 /// 访客视图的协议
@@ -105,15 +106,55 @@ class VisitorView: UIView {
         registerBtn.addTarget(self, action: #selector(registerBtnClick), for: UIControlEvents.touchUpInside)
         loginBtn.addTarget(self, action: #selector(loginBtnClick), for: UIControlEvents.touchUpInside)
         
-        //设置背景颜色 - 灰度图 R = G = B 在 UI 元素中，大多都使用灰度图或者纯色图（安全色- 在不同设备上视觉效果一致）
-        backgroundColor = UIColor(white: 237.0 / 255.0, alpha: 1)
+        layoutWithSnapKit()
+    //设置背景颜色 - 灰度图 R = G = B 在 UI 元素中，大多都使用灰度图或者纯色图（安全色- 在不同设备上视觉效果一致）
+    backgroundColor = UIColor(white: 237.0 / 255.0, alpha: 1)
+    }
+    
+    func layoutWithSnapKit() {
+        //图标
+        iconView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.centerY.equalTo(self).offset(-60)
+        }
+        //小房子
+        homeIconImage.snp.makeConstraints { (make) in
+            make.center.equalTo(iconView)
+        }
+        //消息文字
+        messageLab.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.top.equalTo(iconView.snp.bottom).offset(20)
+            make.size.equalTo(CGSize(width: 230, height: 36))
+        }
+        //注册按钮
+        registerBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(messageLab)
+            make.top.equalTo(messageLab.snp.bottom).offset(20)
+            make.size.equalTo(CGSize(width: 100, height: 36))
+        }
+        //登录按钮
+        loginBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(messageLab)
+            make.top.equalTo(registerBtn)
+            make.size.equalTo(registerBtn)
+        }
+        //遮罩
+        maskIconView.snp.makeConstraints { (make) in
+            make.left.equalTo(self)
+            make.top.equalTo(self)
+            make.width.equalTo(self)
+            make.bottom.equalTo(registerBtn)
+        }
+    }
         
+    func layoutWithSwiftNativeCode() {
         //设置自动布局
         /*
          1\添加约束需要添加到父视图上
          2\字视图最好有一个统一的参照物
          "view1.attr1 = view2.attr2 * multiplier + constant"
-        */
+         */
         //translatesAutoresizingMaskIntoConstraints 默认是 true,支持使用 setFrame的方式设置控件位置
         //false支持使用自动布局来设置控件位置
         for view in self.subviews {
@@ -121,18 +162,7 @@ class VisitorView: UIView {
         }
         //图标
         addConstraint(NSLayoutConstraint(item: iconView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0))
-         addConstraint(NSLayoutConstraint(item: iconView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: -60))
-        //遮罩
-        /*VFL:可视化格式语言
-         H:水平方向
-         V:垂直方向
-         I:边界
-         []包装控件
-         views:一个字典 [名字: 控件名] - VFL 字符串中表示控件的字符串
-         metrics:一个字典 [名字: NSNumber] - VFL字符串中表示某一个数组
-         */
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[mask]-0-|", options: [], metrics: nil, views: ["mask": maskIconView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[mask]-(btnH)-[regBtn]", options: [], metrics: ["btnH": -36], views: ["mask": maskIconView, "regBtn": registerBtn]))
+        addConstraint(NSLayoutConstraint(item: iconView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: -60))
         
         //小房子
         addConstraint(NSLayoutConstraint(item: homeIconImage, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: iconView, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0))
@@ -152,6 +182,18 @@ class VisitorView: UIView {
         addConstraint(NSLayoutConstraint(item: loginBtn, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: messageLab, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 20))
         addConstraint(NSLayoutConstraint(item: loginBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 100))
         addConstraint(NSLayoutConstraint(item: loginBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 36))
+        
+        //遮罩
+        /*VFL:可视化格式语言
+         H:水平方向
+         V:垂直方向
+         I:边界
+         []包装控件
+         views:一个字典 [名字: 控件名] - VFL 字符串中表示控件的字符串
+         metrics:一个字典 [名字: NSNumber] - VFL字符串中表示某一个数组
+         */
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[mask]-0-|", options: [], metrics: nil, views: ["mask": maskIconView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[mask]-(btnH)-[regBtn]", options: [], metrics: ["btnH": -36], views: ["mask": maskIconView, "regBtn": registerBtn]))
     }
 }
 
