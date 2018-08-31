@@ -14,6 +14,7 @@ import Foundation
  如果没有父类，所有的内容，都需要从头创建，量级更轻
  
  视图模型的作用：封装业务逻辑，通常没有复杂的属性，所以通常没有父类
+ 如果碰到控制器要处理的业务逻辑非常多，则可以建立多个视图模型，分担同一个控制器的工作
  */
 class UserAccountViewModel {
     
@@ -22,6 +23,15 @@ class UserAccountViewModel {
     
     //用户模型
     var account:UserAccount?
+    //返回有效的 token
+    var accessToken:String? {
+        //如果 token过期返回 nil，如果没有过期，返回 account中的 token属性
+        if !isExpired {
+            return account?.access_token
+        }
+        return nil
+    }
+    
     //用户登录标记
     var userLogon:Bool {
         //1、如果 token有值，说明登录成功
@@ -115,7 +125,7 @@ extension UserAccountViewModel {
     /// - Parameter account: 用户账户对象
     private func loadUserInfo(account:UserAccount , finish:@escaping (Bool) -> ())  {
         
-        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!, accessToken: account.access_token!) { (result, error) in
+        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!) { (result, error) in
             if error != nil {
                 print("加载用户信息出错了")
                 finish(false)
@@ -135,7 +145,7 @@ extension UserAccountViewModel {
             account.avatar_large = dict["avatar_large"] as? String
             
             //保存对象
-            account.saveUserAccount()
+            NSKeyedArchiver.archiveRootObject(account, toFile: self.accountPath)
             
             //需要完成回调！！！
             finish(true)

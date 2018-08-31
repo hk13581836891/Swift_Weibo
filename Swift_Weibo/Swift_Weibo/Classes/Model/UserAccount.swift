@@ -7,6 +7,11 @@
 //
 
 import UIKit
+//单纯 as在 swift 中使用只有一下三种情况 “桥接”,其他时候都是使用 as! 或者 as?
+//1> String as NSString
+//2> NSArray as [array]
+//3> NSDictionary as [String : Any]
+//            (path as NSString).strings(byAppendingPaths: [""])
 
 //用户账户模型
 @objcMembers class UserAccount: NSObject, NSCoding {
@@ -46,26 +51,6 @@ import UIKit
         
     }
     
-    //MARK: - 保存当前对象
-    func saveUserAccount() {
-        //1、保存路径
-        var path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
-//        path = path + "/account.plist"
-        //2、拼接路径
-        path = path.appending("/account.plist")
-        //单纯 as在 swift 中使用只有一下三种情况 “桥接”,其他时候都是使用 as! 或者 as?
-        //1> String as NSString
-        //2> NSArray as [array]
-        //3> NSDictionary as [String : Any]
-//            (path as NSString).strings(byAppendingPaths: [""])
-        
-        //在实际开发中，一定要确认文件真的保存了
-        print(path)
-        
-        //3、归档保存
-        NSKeyedArchiver.archiveRootObject(self, toFile: path)
-        
-    }
     //MARK: - '键值'归档和解档
     
     /// 归档 - 在把当前对象保存到磁盘前，将对象编码城二进制数据 - 跟网络的序列化概念很像

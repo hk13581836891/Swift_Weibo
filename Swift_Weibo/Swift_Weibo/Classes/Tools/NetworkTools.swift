@@ -46,9 +46,9 @@ extension NetworkTools {
     ///   - accessToken:accessToken
     ///   - finish: 完成回调
     /// - see: [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
-    func loadUserInfo(uid:String, accessToken:String, finish:@escaping HKRequestCallBack) {
+    func loadUserInfo(uid:String, finish:@escaping HKRequestCallBack) {
         let urlString = "https://api.weibo.com/2/users/show.json"
-        let params = ["uid":uid, "access_token":accessToken]
+        let params = ["uid":uid, "access_token":UserAccountViewModel.sharedUserAccount.accessToken!]
         
         request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
