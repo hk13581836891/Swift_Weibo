@@ -13,7 +13,6 @@ class OAuthViewController: UIViewController {
 
     private lazy var webView = UIWebView()
     
-    
     //MARK: - 监听方法
     @objc func close()   {
         dismiss(animated: true, completion: nil)
@@ -76,43 +75,15 @@ extension OAuthViewController:UIWebViewDelegate {
         print(code)
         
         //4、加载 accessToken
-        NetworkTools.sharedTools.loadAccessToken(code: code) { (result, error) in
-            //1>判断错误
-            if error != nil {
-                print("获取 AccessToken 失败")
+        UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code) { (isSuccessed) in
+            if isSuccessed {
+                print("成功了")
+                print(UserAccountViewModel.sharedUserAccount.account as Any)
+            }else{
+                print("失败了")
             }
-            print(result!)
-            //2>输出结果 - 在 swift中任何 Any 在使用前，必须转换类型 -> as ?/类型
-            let accout = UserAccount(dict: result as! [String : Any])
-            print(accout)
-            self.loadUserInfo(account: accout)
-            
         }
         return false
-    }
-    
-    private func loadUserInfo(account:UserAccount)  {
-        
-        NetworkTools.sharedTools.loadUserInfo(uid: account.uid!, accessToken: account.access_token!) { (result, error) in
-            if error != nil {
-                print("加载用户信息出错了")
-                return
-            }
-            //提示：如果使用 if let / guard let 统统使用‘？’
-            //做了两个判断 1、一定有内容 2、一定是字典
-            guard let dict = result as? [String : Any]  else {
-                print("格式错误")
-                return
-            }
-            
-            //经过 guard守护后 dict一定是一个有值的字典
-            //将用户信息保存
-            account.screen_name = dict["screen_name"] as? String
-            account.avatar_large = dict["avatar_large"] as? String
-            print(account)
-            //保存对象
-            account.saveUserAccount()
-        }
     }
 }
 
