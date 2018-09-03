@@ -39,6 +39,10 @@ class UserAccountViewModel {
         return account?.access_token != nil && !isExpired
     }
     
+    var avatarUrl:URL {
+        return NSURL(string: (account?.avatar_large)!)! as URL
+    }
+    
     
     //归档保存的路径 - 计算型属性（类似于有返回值的函数, 可以让调用的时候语义会更清晰）
     private var accountPath:String {

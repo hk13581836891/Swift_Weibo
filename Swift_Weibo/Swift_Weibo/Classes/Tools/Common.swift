@@ -9,7 +9,11 @@
 //目的：提供全局共享属性或者方法，类似于 pch文件
 import UIKit
 
+//MARK: - 全局通知定义
+//切换根视图控制器通知 - 一定要够长，要有前缀
+let WBSwitchRootViewControllerNotification = "WBSwitchRootViewControllerNotifaction"
+
 //全局外观渲染颜色 - 延展出‘配色’管理类
-let AppearanceTintColor = UIColor.orange
+let WBAppearanceTintColor = UIColor.orange
 
 
