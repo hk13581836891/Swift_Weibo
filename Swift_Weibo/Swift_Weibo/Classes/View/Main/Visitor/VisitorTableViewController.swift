@@ -22,7 +22,7 @@ import UIKit
 class VisitorTableViewController: UITableViewController {
 
     ///用户登录标记
-    var usrLogon =  false //UserAccountViewModel.sharedUserAccount.userLogon
+    var usrLogon = UserAccountViewModel.sharedUserAccount.userLogon
     ///访客视图
     var visitorView:VisitorView?
     

@@ -25,6 +25,11 @@
 		D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */; };
 		D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */; };
 		D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3934DA7212AA36800C7886D /* Assets.xcassets */; };
+		D3992E0C213FCE7200A95554 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3992E0B213FCE7200A95554 /* Status.swift */; };
+		D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A5D33213E899D00DD9552 /* Dispatch.swift */; };
+		D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */; };
+		D39CD4FE2140D3A900C0A289 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FD2140D3A900C0A289 /* User.swift */; };
+		D39CD5002140DC8400C0A289 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */; };
 		D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */; };
 		D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */; };
 		D3B73199213911E80031C676 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B73198213911E80031C676 /* NewFeatureViewController.swift */; };
@@ -58,6 +63,11 @@
 		D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewController.swift; sourceTree = "<group>"; };
 		D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		D3934DA7212AA36800C7886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3992E0B213FCE7200A95554 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		D39A5D33213E899D00DD9552 /* Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		D39CD4FD2140D3A900C0A289 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		D3B73198213911E80031C676 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */,
+				D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */,
+				D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -127,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				D383215C2136AC32003FE31E /* UserAccount.swift */,
+				D3992E0B213FCE7200A95554 /* Status.swift */,
+				D39CD4FD2140D3A900C0A289 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +192,7 @@
 			children = (
 				D35C9024212BB2CB0096BFF6 /* Extension */,
 				D3928325212EB61500D02D17 /* Common.swift */,
+				D39A5D33213E899D00DD9552 /* Dispatch.swift */,
 				D3453558212F9F7E000E9BC7 /* SoundTools.swift */,
 				D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */,
 			);
@@ -389,16 +404,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39CD4FE2140D3A900C0A289 /* User.swift in Sources */,
 				D3EB5A43213930E200CABADA /* UIColor+Extension.swift in Sources */,
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
 				D3F9C23A213D11310036860E /* WelcomViewController.swift in Sources */,
 				D383215D2136AC32003FE31E /* UserAccount.swift in Sources */,
 				D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */,
+				D39CD5002140DC8400C0A289 /* StatusViewModel.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
 				D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */,
+				D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */,
 				D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */,
+				D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
+				D3992E0C213FCE7200A95554 /* Status.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
 				D383215921368977003FE31E /* String+Extension.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,

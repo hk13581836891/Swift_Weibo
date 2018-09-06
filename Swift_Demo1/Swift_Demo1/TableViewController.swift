@@ -23,6 +23,7 @@ class TableViewController: UITableViewController {
     }
     //从一个 vc跳转到另一个 vc调用的方法
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         //1、拿到目标控制器
         guard let detailvc = segue.destination as? DetailViewController else {
             return

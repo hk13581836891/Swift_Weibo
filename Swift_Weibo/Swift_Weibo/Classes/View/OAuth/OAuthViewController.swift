@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 //用户登录控制器
 class OAuthViewController: UIViewController {
@@ -15,6 +16,7 @@ class OAuthViewController: UIViewController {
     
     //MARK: - 监听方法
     @objc func close()   {
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
     
@@ -68,6 +70,7 @@ extension OAuthViewController:UIWebViewDelegate {
         //2、从百度地址的 url中提取 code= 是否存在
         guard let query = url.query , query.hasPrefix("code=") else {
              print("取消授权")
+            close()
             return true
         }
         //3、从query 字符串中提取‘code=’后面的授权码
@@ -76,14 +79,33 @@ extension OAuthViewController:UIWebViewDelegate {
         
         //4、加载 accessToken
         UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code) { (isSuccessed) in
-            if isSuccessed {
-                print("成功了")
-                print(UserAccountViewModel.sharedUserAccount.account as Any)
-            }else{
+            if !isSuccessed {
                 print("失败了")
+                SVProgressHUD.showInfo(withStatus: "网络不给力")
+                dispatchAfter(after: 1, handler: {
+                    self.close()
+                })
+                return
             }
+            print("成功了")
+            //dismiss方法不会立即将控制器销毁，所以将控制器切换放在 dismiss完成以后
+            self.dismiss(animated: false, completion: {
+                //停止指示器
+                SVProgressHUD.dismiss()
+                //通知中心是同步的 - 一旦发送通知，会先执行监听方法，执行结束后，才执行后续代码
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBSwitchRootViewControllerNotification), object: "welcome")
+            })
+            
         }
         return false
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        SVProgressHUD.dismiss()
     }
 }
 

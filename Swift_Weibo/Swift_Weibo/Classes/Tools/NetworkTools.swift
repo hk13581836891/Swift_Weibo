@@ -36,6 +36,25 @@ class NetworkTools: AFHTTPSessionManager {
     
 }
 
+// MARK: - 微博数据相关方法
+extension NetworkTools {
+    
+    /// 加载微博数据
+    ///
+    /// - Parameter finish: 完成回调
+    func loadStatus(finish:@escaping HKRequestCallBack)  {
+        
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
+            //通知调用方，token 无效
+            finish(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
+            return
+        }
+        let params = [ "access_token":accessToken]
+        request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
+    }
+}
+
 //MARK: - 用户相关方法
 extension NetworkTools {
     
@@ -87,23 +106,24 @@ extension NetworkTools {
 extension NetworkTools{
     
       private func request(method:RequestMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
-    
+
         let progress = {(progress: Progress) in}
         let success = { (task: URLSessionDataTask, result:Any?) in
              finished(result, nil)
         }
         let failure = { (task: URLSessionDataTask?, error:Error) in
-            
+
             print(error)
             finished(nil, error)
         }
-        
+
+
         if method == RequestMethod.GET{
-           get(URLString, parameters: parameters, progress: progress, success: success, failure: failure)
+           get(URLString, parameters: parameters, progress: progress, success: success , failure: failure)
         }else{
-            post(URLString, parameters: parameters, progress: progress, success: success, failure: failure)
+            post(URLString, parameters: parameters, progress: progress, success: success , failure: failure)
         }
-        
+
     }
 }
 

@@ -45,11 +45,13 @@ class WelcomViewController: UIViewController {
          - 在运行循环结束前，调用 layoutSubviews 函数统一设置 frame
          - 如果希望某些约束提前更新!使用‘layoutIfNeeded’函数 让自动布局系统提前更新当前收集到的约束变化
          */
+        
         iconView.snp.updateConstraints { (make) in
              make.bottom.equalTo(view).offset( -UIScreen.main.bounds.size.height * 0.7)
         }
-        //2、动画
-        UIView.animate(withDuration: 1.7, delay: 1, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
+        
+//        //2、动画
+        UIView.animate(withDuration: 1.7, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
             //修改所有‘可动画’属性 - 自动布局动画
             self.view.layoutIfNeeded()
         }, completion:  { (_) in
@@ -62,6 +64,7 @@ class WelcomViewController: UIViewController {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBSwitchRootViewControllerNotification), object: nil)
             })
         })
+        
     }
 
     //MARK: - 懒加载控件
@@ -89,6 +92,7 @@ extension WelcomViewController {
         
         //2、自动布局
         iconView.snp.makeConstraints { (make) in
+            print(view)
             make.centerX.equalTo(view)
             //multiplier 是只读属性，创建之后不允许修改，所以此处不使用
             make.bottom.equalTo(view).offset( -(UIScreen.main.bounds.size.height * 0.3))
