@@ -34,12 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             queue: nil) //nil,是在主线程发通知,如果监听到通知后，需要异步处理，此处指定一个队列即可
             {[weak self] (notifaction) in //通知中心和 AppDelegate都是常驻的，易出现循环引用，但结合到生命周期考虑，所以这个闭包也可以不用weakself
                 
-                print(Thread.current)
-                dispatchAfter(after: 0.5, handler: {
-                    let vc = notifaction.object != nil ? WelcomViewController() : MainViewController()
-                    self?.window?.rootViewController = vc
-                })
-               
+                let vc = notifaction.object != nil ? WelcomViewController() : MainViewController()
+                self?.window?.rootViewController = vc
             }
         return true
     }

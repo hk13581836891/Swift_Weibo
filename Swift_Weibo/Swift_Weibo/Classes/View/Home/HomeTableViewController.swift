@@ -30,7 +30,12 @@ class HomeTableViewController: VisitorTableViewController {
     
     func prepareTableView()  {
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(self.classForCoder)")
+        tableView.register(StatusCell.self, forCellReuseIdentifier: "\(StatusCell.self)")
+        
+        //预估行高
+        tableView.estimatedRowHeight = 200
+        //自动计算行高 - 需要一个自上而下的自动布局的控件，指定一个向下的约束
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     private func loadData()  {
@@ -57,9 +62,9 @@ extension HomeTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(self.classForCoder)", for: indexPath)
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.user?.screen_name
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusCell.self)", for: indexPath) as! StatusCell
+//        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.user?.screen_name
+        cell.viewModel = listViewModel.statusList[indexPath.row]
         return cell
     }
 }

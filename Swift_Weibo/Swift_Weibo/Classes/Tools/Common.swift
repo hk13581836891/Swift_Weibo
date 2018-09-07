@@ -16,4 +16,9 @@ let WBSwitchRootViewControllerNotification = "WBSwitchRootViewControllerNotifact
 //全局外观渲染颜色 - 延展出‘配色’管理类
 let WBAppearanceTintColor = UIColor.orange
 
+/// 微博 cell中控件的间距数值
+let StatusCellMargin: CGFloat = 15
+
+/// 微博头像宽度
+let StatusCellIconWidth:CGFloat = 35
 
