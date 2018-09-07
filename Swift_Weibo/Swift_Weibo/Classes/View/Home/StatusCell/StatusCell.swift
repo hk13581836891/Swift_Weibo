@@ -62,12 +62,41 @@ extension StatusCell {
         contentLab.snp.makeConstraints { (make) in
             make.top.equalTo(topView.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView).offset(StatusCellMargin)
+        }
+        
+        //底部视图
+        bottomView.snp.makeConstraints { (make) in
+            make.top.equalTo(contentLab.snp.bottom).offset(StatusCellMargin)
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+            make.height.equalTo(44)
             
             //指定向下的约束
             make.bottom.equalTo(contentView).offset( -StatusCellMargin)
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

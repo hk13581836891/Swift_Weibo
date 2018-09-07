@@ -22,12 +22,12 @@ extension UIButton{
         sizeToFit()
     }
     
-    /// 遍历构造函数
+    /// 便利构造函数
     ///
     /// - Parameters:
     ///   - title: title
     ///   - color: textColor
-    ///   - imageName: backImageName
+    ///   - imageName: 背景图像
     convenience init(title:String, color:UIColor, imageName:String){
         self.init()
         
@@ -37,4 +37,51 @@ extension UIButton{
         
         sizeToFit()
     }
+    
+    /// 便利构造函数
+    ///
+    /// - Parameters:
+    ///   - title: title
+    ///   - title: 字体大小
+    ///   - color: textColor
+    ///   - imageName: 图像名称
+    convenience init(title:String, fontSize:CGFloat, color:UIColor = UIColor.darkGray, imageName:String){
+        self.init()
+        
+        setTitle(title, for: UIControlState.normal)
+        setTitleColor(color, for: UIControlState.normal)
+        setImage(UIImage(named: imageName), for: UIControlState.normal)
+        titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+        
+        sizeToFit()
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
