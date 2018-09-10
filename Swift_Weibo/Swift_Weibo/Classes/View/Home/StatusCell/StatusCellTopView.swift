@@ -47,12 +47,17 @@ class StatusCellTopView: UIView {
     private lazy var timeLab:UILabel = UILabel(title: "时间", color: UIColor.orange, fontSize: 11)
     /// 来源标签
     private lazy var sourceLab:UILabel = UILabel(title: "来源", fontSize: 11)
-    
 }
 
 // MARK: - 设置界面
 extension StatusCellTopView {
+   
     func setupUI()  {
+        
+        //添加分割视图
+        let sepView = UIView()
+        sepView.backgroundColor = UIColor.lightGray
+        addSubview(sepView)
         
         //添加控件
         addSubview(iconView)
@@ -61,10 +66,16 @@ extension StatusCellTopView {
         addSubview(vipImg)
         addSubview(timeLab)
         addSubview(sourceLab)
-
+    
         //添加约束
+        sepView.snp.makeConstraints { (make) in
+            make.top.equalTo(self)
+            make.left.equalTo(self)
+            make.right.equalTo(self)
+            make.height.equalTo(StatusCellMargin)
+        }
         iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(StatusCellMargin)
+            make.top.equalTo(sepView.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(self).offset(StatusCellMargin)
             make.size.equalTo(CGSize(width: StatusCellIconWidth , height: StatusCellIconWidth))
         }

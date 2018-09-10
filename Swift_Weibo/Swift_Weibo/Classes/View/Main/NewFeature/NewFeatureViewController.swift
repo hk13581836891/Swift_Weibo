@@ -145,7 +145,7 @@ private class NewFeatureCell : UICollectionViewCell {
     //MARK: - 懒加载控件
     //图像
     private lazy var iconView:UIImageView = UIImageView()
-    private lazy var startButton:UIButton = UIButton(title: "开始体验", color: UIColor.white, imageName: "new_feature_finish_button")
+    private lazy var startButton:UIButton = UIButton(title: "开始体验", color: UIColor.white, backImageName: "new_feature_finish_button")
     
 }
 

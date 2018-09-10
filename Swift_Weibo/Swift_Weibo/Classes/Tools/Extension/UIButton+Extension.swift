@@ -27,13 +27,13 @@ extension UIButton{
     /// - Parameters:
     ///   - title: title
     ///   - color: textColor
-    ///   - imageName: 背景图像
-    convenience init(title:String, color:UIColor, imageName:String){
+    ///   - backImageName: 背景图像
+    convenience init(title:String, color:UIColor, backImageName:String){
         self.init()
         
         setTitle(title, for: UIControlState.normal)
         setTitleColor(color, for: UIControlState.normal)
-        setBackgroundImage(UIImage(named: imageName), for: UIControlState.normal)
+        setBackgroundImage(UIImage(named: backImageName), for: UIControlState.normal)
         
         sizeToFit()
     }
