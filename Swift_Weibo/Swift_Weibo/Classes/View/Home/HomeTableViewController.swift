@@ -33,9 +33,12 @@ class HomeTableViewController: VisitorTableViewController {
         tableView.register(StatusCell.self, forCellReuseIdentifier: "\(StatusCell.self)")
         
         //预估行高
-        tableView.estimatedRowHeight = 200
+//        tableView.estimatedRowHeight = 200
+//        //自动计算行高 - 需要一个自上而下的自动布局的控件，指定一个向下的约束
+//        tableView.rowHeight = UITableViewAutomaticDimension
+           tableView.estimatedRowHeight  = 600
         //自动计算行高 - 需要一个自上而下的自动布局的控件，指定一个向下的约束
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 600
     }
     
     private func loadData()  {

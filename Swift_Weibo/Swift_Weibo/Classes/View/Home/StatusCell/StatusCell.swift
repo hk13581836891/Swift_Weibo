@@ -86,7 +86,7 @@ extension StatusCell {
             make.height.equalTo(44)
             
             //指定向下的约束
-            make.bottom.equalTo(contentView).offset( -StatusCellMargin)
+//            make.bottom.equalTo(contentView).offset( -StatusCellMargin)
         }
     }
 }
