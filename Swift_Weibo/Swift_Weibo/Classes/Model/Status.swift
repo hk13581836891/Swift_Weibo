@@ -19,6 +19,9 @@ import UIKit
     var created_at:String?
     /// 微博来源
     var source:String?
+    /// 缩略图配图数组 key:thumbnail_pic
+    var pic_urls:[[String: String]]?
+    
     /// 用户模型 - 嵌套模型需重写KVC方法,重写setValue(_ value: Any?, forKey key: String)
     var user:User?
     
@@ -40,7 +43,7 @@ import UIKit
     }
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     override var description: String {
-        let keys = ["id","text","created_at","source", "user"]
+        let keys = ["id","text","created_at","source","pic_urls", "user"]
         
         return dictionaryWithValues(forKeys: keys).description
     }

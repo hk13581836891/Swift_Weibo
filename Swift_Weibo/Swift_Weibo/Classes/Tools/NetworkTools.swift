@@ -42,6 +42,7 @@ extension NetworkTools {
     /// 加载微博数据
     ///
     /// - Parameter finish: 完成回调
+    /// - see: [http://open.weibo.com/wiki/2/statuses/home_timeline](http://open.weibo.com/wiki/2/statuses/home_timeline)
     func loadStatus(finish:@escaping HKRequestCallBack)  {
         
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"

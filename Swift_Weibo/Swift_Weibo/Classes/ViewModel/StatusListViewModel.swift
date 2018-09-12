@@ -37,6 +37,7 @@ class StatusListViewModel {
             //3、拼接数据
             self.statusList = dataList + self.statusList
             print(self.statusList)
+            print("0000000")
             //4、完成回调
             finish(true)
         }
