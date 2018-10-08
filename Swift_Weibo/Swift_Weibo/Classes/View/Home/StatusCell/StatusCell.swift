@@ -19,14 +19,37 @@ class StatusCell: UITableViewCell {
             topView.viewModel = viewModel
             
             contentLab.text = viewModel?.status.text
+            
             pictureView.viewModel = viewModel
             pictureView.snp.updateConstraints { (make) in
                 make.height.equalTo(pictureView.bounds.height)
                 make.width.equalTo(pictureView.bounds.width)
             }
+            //底部视图
+//            bottomView.snp.makeConstraints({ (make) in
+//                make.top.equalTo((viewModel?.thumbnailUrls?.count ?? 0 > 0) ? pictureView.snp.bottom : contentLab.snp.bottom).offset(StatusCellMargin)
+//                make.left.equalTo(contentView)
+//                make.right.equalTo(contentView)
+//                make.height.equalTo(44)
+//
+//                //指定向下的约束
+////                make.bottom.equalTo(contentView)
+//            })
         }
     }
     
+    /// 根据指定的视图模型计算行高
+    ///
+    /// - Parameter vm: 视图模型
+    /// - Returns: 返回视图模型对应的行高
+    func rowHeigth(vm:StatusViewModel) -> CGFloat {
+        //1、记录视图模型 ->会调用上面的 didSet设置内容以及更新‘约束’
+        viewModel = vm;
+        //2、强制更新所有约束 -> 所有空间的 frame 都会被计算正确
+        contentView.layoutIfNeeded()
+        //3、返回底部视图的最大高度
+        return bottomView.frame.maxY
+    }
     //MARK: - 构造函数
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -84,9 +107,9 @@ extension StatusCell {
             make.left.equalTo(contentView)
             make.right.equalTo(contentView)
             make.height.equalTo(44)
-            
+
             //指定向下的约束
-//            make.bottom.equalTo(contentView).offset( -StatusCellMargin)
+//            make.bottom.equalTo(contentView)
         }
     }
 }

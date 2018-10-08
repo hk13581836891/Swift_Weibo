@@ -15,6 +15,9 @@ class StatusViewModel:CustomStringConvertible {
     /// 微博的模型
     var status:Status
     
+    /// 缓存行高
+    var rowHeight:CGFloat?
+    
     /// 用户头像 URL
     var userIconUrl:URL {
         return URL(string: (status.user?.profile_image_url) ?? "")!

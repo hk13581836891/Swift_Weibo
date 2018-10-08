@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 /// 照片之间的间距
 private let StatusPictureViewItemMargin: CGFloat = 8
@@ -19,9 +20,8 @@ class StatusPictureView: UICollectionView {
     /// 微博视图模型
     var viewModel:StatusViewModel? {
         didSet{
+            backgroundColor = UIColor.white
             sizeToFit()
-            print(viewModel?.status.text)
-            
             
             //问题描述：创建StatusCell过程中，StatusPictureView的 init()及数据源方法仅在开始调用3次,以后不会再被调用
             //刷新数据 - 为解决tableView的 StatusCell复用时，导致 cell里的StatusPictureView中的UICollectionViewCell也会被复用的问题
@@ -48,7 +48,7 @@ class StatusPictureView: UICollectionView {
         dataSource = self
         
         //注册可重用 cell
-        register(UICollectionViewCell.self, forCellWithReuseIdentifier: "\(StatusPictureView.self)")
+        register(StatusPictureViewCell.self, forCellWithReuseIdentifier: "\(StatusPictureViewCell.self)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,15 +60,12 @@ class StatusPictureView: UICollectionView {
 extension StatusPictureView : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        print("!!!!!!!!!!!!!!1")
-        print("\(String(describing: viewModel?.thumbnailUrls?.count))")
         return viewModel?.thumbnailUrls?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(StatusPictureView.self)", for: indexPath)
-        cell.backgroundColor = UIColor.purple
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(StatusPictureViewCell.self)", for: indexPath) as! StatusPictureViewCell
+        cell.imgurl = viewModel?.thumbnailUrls?[indexPath.item]
         
         return cell
         
@@ -109,7 +106,6 @@ extension StatusPictureView {
         }
         
         //其他张数
-        self.backgroundColor = UIColor.blue
         let w = UIScreen.main.bounds.size.width - StatusCellMargin * 2
         let row = CGFloat((count - 1) / Int(rowCont) + 1)
         let h = row * itemW + (row - 1) * StatusPictureViewItemMargin
@@ -118,6 +114,39 @@ extension StatusPictureView {
     }
 }
 
+
+// MARK: - 配图 cell
+private class StatusPictureViewCell : UICollectionViewCell {
+    
+    var imgurl:URL?{
+        didSet{
+            imgView.sd_setImage(with: imgurl, placeholderImage: nil, //在调用 oc框架时，可/必选项不严格
+                options: [SDWebImageOptions.retryFailed , //SD超时时长15s,一旦超时会记入黑名单，下次不再下载，而retryFailed则是让下载失败的图片不计入黑名单
+                 SDWebImageOptions.refreshCached],//如果 URL 不变，图片变了，则能及时请求新图片，而不用缓存旧图片
+                                completed: nil)
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
+        contentView.addSubview(imgView)
+        //需要设置自动布局- 提示：因为 cell会变化，另外，不同的 cell大小可能不一样
+        imgView.snp.makeConstraints { (make) in
+//            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0)) 以下二者效果一样
+            make.edges.equalTo(contentView.snp.edges)
+        }
+    }
+    // MARK: - 懒加载控件
+    private lazy var imgView : UIImageView = UIImageView()
+}
 
 
 
