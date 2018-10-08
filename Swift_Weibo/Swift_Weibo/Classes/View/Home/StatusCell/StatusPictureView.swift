@@ -100,8 +100,7 @@ extension StatusPictureView {
         
         //4张图片
         if count == 4 {
-            self.backgroundColor = UIColor.red
-            let w = itemW * 2 + StatusPictureViewItemMargin
+            let w = itemW * 2 + StatusPictureViewItemMargin + 2
             return CGSize(width: Int(w), height: Int(w))
         }
         

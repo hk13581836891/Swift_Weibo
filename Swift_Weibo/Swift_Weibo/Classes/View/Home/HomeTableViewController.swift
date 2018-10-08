@@ -98,15 +98,19 @@ extension HomeTableViewController {
      实际开发中，行高一定要缓存
      */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print(indexPath)
-        let vm:StatusViewModel = listViewModel.statusList[indexPath.row]
-        if vm.rowHeight != nil {
-            return vm.rowHeight!
-        }
-        //计算行高
-        let cell = StatusCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusCell.self)")
-        vm.rowHeight = cell.rowHeigth(vm: vm)
-        return vm.rowHeight!
+
+        return listViewModel.statusList[indexPath.row].rowHeight
+
+    //在 viewModel 中使用懒加载计算并存储 rowHeight 以后，以下代码即可省略
+        //        print(indexPath)
+//        let vm:StatusViewModel = listViewModel.statusList[indexPath.row]
+//        if vm.rowHeight != nil {
+//            return vm.rowHeight!
+//        }
+//        //计算行高
+//        let cell = StatusCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusCell.self)")
+//        vm.rowHeight = cell.rowHeigth(vm: vm)
+//        return vm.rowHeight!
     }
 }
 

@@ -16,7 +16,12 @@ class StatusViewModel:CustomStringConvertible {
     var status:Status
     
     /// 缓存行高
-    var rowHeight:CGFloat?
+    lazy var rowHeight:CGFloat = {
+        //计算行高
+        print("计算行高 \(String(describing: self.status.text))")
+        let cell = StatusCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusCell.self)")
+        return cell.rowHeigth(vm: self)
+    }()
     
     /// 用户头像 URL
     var userIconUrl:URL {
