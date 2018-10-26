@@ -24,17 +24,10 @@ class StatusCell: UITableViewCell {
             pictureView.snp.updateConstraints { (make) in
                 make.height.equalTo(pictureView.bounds.height)
                 make.width.equalTo(pictureView.bounds.width)
+                
+                //如果没有配图，顶部间距设为0
+//                make.top.equalTo(contentLab.snp.bottom).offset((viewModel?.thumbnailUrls?.count ?? 0 > 0 ) ? StatusCellMargin : 0)
             }
-            //底部视图
-//            bottomView.snp.makeConstraints({ (make) in
-//                make.top.equalTo((viewModel?.thumbnailUrls?.count ?? 0 > 0) ? pictureView.snp.bottom : contentLab.snp.bottom).offset(StatusCellMargin)
-//                make.left.equalTo(contentView)
-//                make.right.equalTo(contentView)
-//                make.height.equalTo(44)
-//
-//                //指定向下的约束
-////                make.bottom.equalTo(contentView)
-//            })
         }
     }
     
@@ -53,7 +46,7 @@ class StatusCell: UITableViewCell {
     //MARK: - 构造函数
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        self.selectionStyle = .none
         setupUI()
     }
     
@@ -65,16 +58,13 @@ class StatusCell: UITableViewCell {
     /// 顶部视图
     private lazy var topView:StatusCellTopView = StatusCellTopView()
     /// 微博正文标签
-    private lazy var contentLab:UILabel = UILabel(title: "微博正文", fontSize: 15, screenInset:StatusCellMargin)
+    lazy var contentLab:UILabel = UILabel(title: "微博正文", fontSize: 15, screenInset:StatusCellMargin)
     /// 配图视图
-    private lazy var pictureView:StatusPictureView = StatusPictureView()
+    lazy var pictureView:StatusPictureView = StatusPictureView()
     /// 底部视图
-    private lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
-}
-
-extension StatusCell {
+    lazy var bottomView:StatusCellBottomView = StatusCellBottomView()
     
-    private func setupUI()  {
+    func setupUI()  {
         //添加控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLab)
@@ -95,24 +85,25 @@ extension StatusCell {
             make.left.equalTo(contentView).offset(StatusCellMargin)
         }
         //配图视图
-        pictureView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentLab.snp.bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentLab)
-            make.width.equalTo(200)
-            make.height.equalTo(80)
-        }
+//        pictureView.snp.makeConstraints { (make) in
+//            make.top.equalTo(contentLab.snp.bottom).offset(StatusCellMargin)
+//            make.left.equalTo(contentLab)
+//            make.width.equalTo(200)
+//            make.height.equalTo(80)
+//        }
         //底部视图
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(pictureView.snp.bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentView)
-            make.right.equalTo(contentView)
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)
-
+            
             //指定向下的约束
-//            make.bottom.equalTo(contentView)
+            //            make.bottom.equalTo(contentView)
         }
     }
 }
+
 
 
 

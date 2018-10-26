@@ -25,6 +25,9 @@ import UIKit
     /// 用户模型 - 嵌套模型需重写KVC方法,重写setValue(_ value: Any?, forKey key: String)
     var user:User?
     
+    /// 被转发的原微博信息字段
+    var retweeted_status:Status?
+    
     
     init(dict:[String: Any]){
         super.init()
@@ -39,11 +42,18 @@ import UIKit
             }
             return
         }
+        //判断 key是否是 retweeted_status
+        if key == "retweeted_status" {
+            if let dict = value as? [String: AnyObject] {
+                retweeted_status = Status(dict: dict)
+            }
+            return
+        }
         super.setValue(value, forKey: key)
     }
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     override var description: String {
-        let keys = ["id","text","created_at","source","pic_urls", "user"]
+        let keys = ["id","text","created_at","source","pic_urls", "user", "retweeted_status"]
         
         return dictionaryWithValues(forKeys: keys).description
     }

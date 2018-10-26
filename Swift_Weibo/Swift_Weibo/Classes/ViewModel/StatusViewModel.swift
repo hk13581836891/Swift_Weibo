@@ -18,8 +18,8 @@ class StatusViewModel:CustomStringConvertible {
     /// 缓存行高
     lazy var rowHeight:CGFloat = {
         //计算行高
-        print("计算行高 \(String(describing: self.status.text))")
-        let cell = StatusCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusCell.self)")
+//        print("计算行高 \(String(describing: self.status.text))")
+        let cell = StatusRetweetedCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusRetweetedCell.self)")
         return cell.rowHeigth(vm: self)
     }()
     
@@ -58,20 +58,33 @@ class StatusViewModel:CustomStringConvertible {
     }
     
     /// 缩略图 URL数组 - 存储型属性
+    /// 如果是原创微博，可以有图，可以没有图
+    /// 如果是转发微博，一定没有图，retweeted_status中，可以有图，也可以没有图
+    /// 一条微博，最多只有一个 pic_urls 数组
     var thumbnailUrls:[URL]?
+    
+    var retweetedText:String?{
+        //1 判断是否转发微博,如果不是直接返回 nil
+        guard let s = status.retweeted_status else {
+            return nil
+        }
+//        status.retweeted_status.
+        //2\ s就是转发微博
+        print("@\(s.user?.screen_name ?? "")：\(s.text ?? "")");
+        return "@\(s.user?.screen_name ?? "")：\(s.text ?? "")"
+    }
     
     /// 构造函数
     init(status:Status){
         self.status = status
         
         //根据模型，来生成缩略图的数组
-        if (status.pic_urls?.count ?? 0) > 0 {
-            
+        if let urls = status.retweeted_status?.pic_urls ?? status.pic_urls {
             //创建缩略图数组
             thumbnailUrls = [URL]()
             
             //遍历字典数组 -> 数组如果可选，不允许遍历，因为数组是通过下标来检索数据，所以使用！
-            for dict in status.pic_urls! {
+            for dict in urls {
                 
                 //因为字典时按照 key来取值，如果 key错误，会返回 nil,此处强行解包是要求服务器返回的 key不出错
                 let url = URL(string: dict["thumbnail_pic"]!)

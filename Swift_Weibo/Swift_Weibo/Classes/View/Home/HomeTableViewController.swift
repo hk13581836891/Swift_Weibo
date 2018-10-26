@@ -31,7 +31,9 @@ class HomeTableViewController: VisitorTableViewController {
     
     func prepareTableView()  {
         
-        tableView.register(StatusCell.self, forCellReuseIdentifier: "\(StatusCell.self)")
+//        tableView.register(StatusCell.self, forCellReuseIdentifier: "\(StatusCell.self)")
+        tableView.register(StatusRetweetedCell.self, forCellReuseIdentifier: "\(StatusRetweetedCell.self)")
+        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //预估行高
         tableView.estimatedRowHeight = 300
@@ -63,7 +65,7 @@ extension HomeTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusCell.self)", for: indexPath) as! StatusCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusRetweetedCell.self)", for: indexPath) as! StatusCell
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusCell.self)") as! StatusCell
 //        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.user?.screen_name
         cell.viewModel = listViewModel.statusList[indexPath.row]
@@ -111,6 +113,10 @@ extension HomeTableViewController {
 //        let cell = StatusCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusCell.self)")
 //        vm.rowHeight = cell.rowHeigth(vm: vm)
 //        return vm.rowHeight!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath)")
     }
 }
 

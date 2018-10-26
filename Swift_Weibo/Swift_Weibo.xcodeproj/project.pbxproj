@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D30AACDB2137E90800EE37FD /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */; };
+		D317384E216DEDF900E939DB /* StatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D317384D216DEDF900E939DB /* StatusRetweetedCell.swift */; };
 		D3453559212F9F7E000E9BC7 /* SoundTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3453558212F9F7E000E9BC7 /* SoundTools.swift */; };
 		D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */ = {isa = PBXBuildFile; fileRef = D345355E212FF201000E9BC7 /* Swift_OCHybrid.m */; };
 		D35C9026212BB3430096BFF6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9025212BB3430096BFF6 /* UIButton+Extension.swift */; };
@@ -47,6 +48,7 @@
 		53310AF4666B1717AB307204 /* Pods-Swift_Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swift_Weibo/Pods-Swift_Weibo.debug.xcconfig"; sourceTree = "<group>"; };
 		C1A1E5B17873A5FC68CC2D45 /* Pods_Swift_Weibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_Weibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		D317384D216DEDF900E939DB /* StatusRetweetedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRetweetedCell.swift; sourceTree = "<group>"; };
 		D3453558212F9F7E000E9BC7 /* SoundTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTools.swift; sourceTree = "<group>"; };
 		D345355C212FF200000E9BC7 /* Swift_Weibo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift_Weibo-Bridging-Header.h"; sourceTree = "<group>"; };
 		D345355D212FF201000E9BC7 /* Swift_OCHybrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_OCHybrid.h; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				D39CD50321412D5C00C0A289 /* StatusCell.swift */,
+				D317384D216DEDF900E939DB /* StatusRetweetedCell.swift */,
 				D39CD50521412D7400C0A289 /* StatusCellTopView.swift */,
 				D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */,
 				D3BC80AA214769B600A0DDA9 /* StatusPictureView.swift */,
@@ -425,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39CD4FE2140D3A900C0A289 /* User.swift in Sources */,
+				D317384E216DEDF900E939DB /* StatusRetweetedCell.swift in Sources */,
 				D3EB5A43213930E200CABADA /* UIColor+Extension.swift in Sources */,
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
