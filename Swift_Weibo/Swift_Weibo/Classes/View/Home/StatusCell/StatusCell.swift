@@ -84,13 +84,7 @@ class StatusCell: UITableViewCell {
             make.top.equalTo(topView.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView).offset(StatusCellMargin)
         }
-        //配图视图
-//        pictureView.snp.makeConstraints { (make) in
-//            make.top.equalTo(contentLab.snp.bottom).offset(StatusCellMargin)
-//            make.left.equalTo(contentLab)
-//            make.width.equalTo(200)
-//            make.height.equalTo(80)
-//        }
+
         //底部视图
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(pictureView.snp.bottom).offset(StatusCellMargin)

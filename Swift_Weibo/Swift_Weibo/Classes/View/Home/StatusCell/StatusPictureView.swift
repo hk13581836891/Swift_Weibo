@@ -20,7 +20,7 @@ class StatusPictureView: UICollectionView {
     /// 微博视图模型
     var viewModel:StatusViewModel? {
         didSet{
-            backgroundColor = UIColor.white
+            backgroundColor = UIColor(white: 0.95, alpha: 1)
             sizeToFit()
             
             //问题描述：创建StatusCell过程中，StatusPictureView的 init()及数据源方法仅在开始调用3次,以后不会再被调用
@@ -88,8 +88,22 @@ extension StatusPictureView {
         
         //一张图片
         if count == 1 {
-            self.backgroundColor = UIColor.yellow
-            let size = CGSize(width: 100, height: 150)
+            var size = CGSize(width: 100, height: 150)
+            if let key = viewModel?.thumbnailUrls?.first?.absoluteString {
+                
+                //利用 SDWebImage价差本地缓存的图像 - key:是 url的完成字符串
+               let image = SDWebImageManager.shared().imageCache?.imageFromDiskCache(forKey: key)
+                size = image?.size ?? size
+            }
+            //过窄处理 - 针对长图
+            size.width = size.width < 40 ? 40 :size.width
+            //过宽的图片
+            if size.width > 300 {
+                let w:CGFloat = 300
+                let h = size.height * w / size.width
+                size = CGSize(width: w, height: h)
+            }
+            //配图视图的大小
             layout.itemSize = size
             return size
         }

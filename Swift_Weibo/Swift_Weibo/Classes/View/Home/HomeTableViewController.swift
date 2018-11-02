@@ -33,6 +33,7 @@ class HomeTableViewController: VisitorTableViewController {
         
 //        tableView.register(StatusCell.self, forCellReuseIdentifier: "\(StatusCell.self)")
         tableView.register(StatusRetweetedCell.self, forCellReuseIdentifier: "\(StatusRetweetedCell.self)")
+        tableView.register(StatusNormalCell.self, forCellReuseIdentifier: "\(StatusNormalCell.self)")
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //预估行高
@@ -65,10 +66,17 @@ extension HomeTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusRetweetedCell.self)", for: indexPath) as! StatusCell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusCell.self)") as! StatusCell
-//        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.user?.screen_name
-        cell.viewModel = listViewModel.statusList[indexPath.row]
+        //修改可重用标识符
+        //1、获取视图模型
+        let vm:StatusViewModel = listViewModel.statusList[indexPath.row]
+        
+        var cell:StatusCell
+        if vm.status.retweeted_status != nil {
+            cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusRetweetedCell.self)", for: indexPath) as! StatusCell
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusNormalCell.self)", for: indexPath) as! StatusCell
+        }
+        cell.viewModel = vm
         return cell
     }
     

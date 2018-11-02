@@ -15,11 +15,20 @@ class StatusViewModel:CustomStringConvertible {
     /// 微博的模型
     var status:Status
     
+    /// 表格的可重用表示符号
+    var cellId:String{
+        return status.retweeted_status != nil ? "\(StatusRetweetedCell.self)" : "\(StatusNormalCell.self)"
+    }
+    
     /// 缓存行高
     lazy var rowHeight:CGFloat = {
         //计算行高
-//        print("计算行高 \(String(describing: self.status.text))")
-        let cell = StatusRetweetedCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusRetweetedCell.self)")
+        var cell:StatusCell
+        if self.status.retweeted_status != nil {
+             cell = StatusRetweetedCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusRetweetedCell.self)")
+        }else{
+            cell = StatusNormalCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusNormalCell.self)")
+        }
         return cell.rowHeigth(vm: self)
     }()
     
