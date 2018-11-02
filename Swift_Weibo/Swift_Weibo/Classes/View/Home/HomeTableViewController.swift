@@ -40,13 +40,26 @@ class HomeTableViewController: VisitorTableViewController {
         tableView.estimatedRowHeight = 300
         //自动计算行高 - 需要一个自上而下的自动布局的控件，指定一个向下的约束
 //        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //下拉刷新控件默认没有 - 高度60
+        refreshControl = WBRefreshControl()
+        //添加监听方法
+        refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
+        
+        let v = UIView.init(frame: CGRect(x: 0, y: 0, width: 180, height: 40))
+        v.backgroundColor = UIColor.red
+        refreshControl?.addSubview(v)
+        
+        refreshControl?.tintColor = UIColor.clear
     }
     
-    private func loadData()  {
+    @objc private func loadData()  {
         
         listViewModel.loadStatus { (isSuccessed) in
             
-            print(Thread.current)
+            //关闭刷新控件
+            self.refreshControl?.endRefreshing()
+            
             if !isSuccessed {
                SVProgressHUD.showInfo(withStatus: "加载数据错误，稍后再试")
                 return
