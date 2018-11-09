@@ -20,7 +20,7 @@ class StatusPictureView: UICollectionView {
     /// 微博视图模型
     var viewModel:StatusViewModel? {
         didSet{
-            backgroundColor = UIColor(white: 0.95, alpha: 1)
+            backgroundColor = UIColor.clear
             sizeToFit()
             
             //问题描述：创建StatusCell过程中，StatusPictureView的 init()及数据源方法仅在开始调用3次,以后不会再被调用
