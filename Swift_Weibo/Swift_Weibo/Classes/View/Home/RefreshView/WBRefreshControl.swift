@@ -12,7 +12,18 @@ private let WBRefreshControlOffset:CGFloat = -60
 
 /// 自定义刷新控件 - 负责处理刷新逻辑
 class WBRefreshControl: UIRefreshControl {
-
+    
+    //MARK: - 重写系统方法
+    override func endRefreshing() {
+        super.endRefreshing()
+        //停止动画
+        refreshView.stopAnimation()
+    }
+    //主动触发开始刷新动画 - 不会触发监听
+    override func beginRefreshing() {
+        super.beginRefreshing()
+        refreshView.startAnimation()
+    }
     //MARK: - kvo监听方法
     /**
      1、始终待在屏幕上
@@ -20,19 +31,23 @@ class WBRefreshControl: UIRefreshControl {
      3、默认的 y 是0
   */
     //箭头旋转标记
-    private var rotateFlag = false
+//    private var rotateFlag = false
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if frame.origin.y > 0 {
             return
         }
-        if frame.origin.y < WBRefreshControlOffset && !rotateFlag {
-            print("翻过来")
-            rotateFlag = true
-        }else if frame.origin.y >= WBRefreshControlOffset && rotateFlag {
-            print("转过去")
-            rotateFlag = false
+        //判断是否正在刷新
+        if isRefreshing {
+            refreshView.startAnimation()
+            return
         }
-            
+        if frame.origin.y < WBRefreshControlOffset && !refreshView.rotateFlag {
+            print("翻过来")
+            refreshView.rotateFlag = true
+        }else if (frame.origin.y >= WBRefreshControlOffset - 0.5 ) && refreshView.rotateFlag {
+            print("转过去")
+            refreshView.rotateFlag = false
+        }
         print("---frame\(frame)")
     }
     
@@ -49,6 +64,9 @@ class WBRefreshControl: UIRefreshControl {
     }
     
     func setupUI()  {
+        //隐藏转轮
+        tintColor = UIColor.clear
+        
         addSubview(refreshView)
         
         //自动布局 - 从 xib加载的控件需要指定大小约束
@@ -69,16 +87,59 @@ class WBRefreshControl: UIRefreshControl {
     }
     //MARK: - 懒加载控件
     private lazy var refreshView = WBRefreshView.refreshView()
-
 }
 
 /// 刷新视图 - 负责处理‘动画显示’
 class WBRefreshView: UIView {
     
+    /// 旋转标记
+    var rotateFlag = false{
+        didSet{
+            var angle = CGFloat(Double.pi) + 0.5
+            angle = self.rotateFlag ? angle - 0.50001 : 0;
+            
+            rotateTipIcon(angle: angle)
+        }
+    }
+    
+    @IBOutlet weak var loadingIconView: UIImageView!
+    @IBOutlet weak var tipView: UIView!
+    @IBOutlet weak var tipIconView: UIImageView!
     /// 从 nib加载视图
     class func refreshView() -> WBRefreshView {
         //推荐使用UINib 的方法是加载 nib
         let nib = UINib(nibName: "WBRefreshView", bundle: nil)
         return nib.instantiate(withOwner: nil, options: nil)[0] as! WBRefreshView
+    }
+    func rotateTipIcon(angle : CGFloat)  {
+        //旋转动画 特点：顺时针优先 + 就近原则
+        UIView.animate(withDuration: 0.5) {
+            self.tipIconView.transform = CGAffineTransform(rotationAngle: angle)
+        }
+    }
+    
+    /// 播放加载动画
+    func startAnimation()  {
+        tipView.isHidden = true
+        
+        //判断动画是否已经被添加
+        let key = "transform.rotation"
+        if loadingIconView.layer.animation(forKey: key) != nil {
+            return
+        }
+        print("加载动画播放")
+
+        let anim = CABasicAnimation(keyPath: key)
+        anim.toValue = CGFloat(Double.pi * 2)
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 0.5
+        anim.isRemovedOnCompletion = false
+        loadingIconView.layer.add(anim, forKey: key)
+    }
+    
+    /// 停止加载动画
+    func stopAnimation() {
+        tipView.isHidden = false
+        loadingIconView.layer.removeAllAnimations()
     }
 }

@@ -88,7 +88,7 @@ extension StatusPictureView {
         
         //一张图片
         if count == 1 {
-            var size = CGSize(width: 100, height: 150)
+            var size = CGSize(width: 0, height: 0)
             if let key = viewModel?.thumbnailUrls?.first?.absoluteString {
                 
                 //利用 SDWebImage价差本地缓存的图像 - key:是 url的完成字符串

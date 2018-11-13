@@ -24,8 +24,8 @@ class HomeTableViewController: VisitorTableViewController {
             visitorView?.setupInfo(imageName: nil, title: "关注一些人，回这里看看有什么惊喜")
             return
         }
-        prepareTableView()
-        loadData()
+        self.prepareTableView()
+        self.loadData()
     }
     
     func prepareTableView()  {
@@ -44,16 +44,20 @@ class HomeTableViewController: VisitorTableViewController {
         refreshControl = WBRefreshControl()
         //添加监听方法
         refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
-        
-        refreshControl?.tintColor = UIColor.clear
+
+        //上拉刷新视图
+        tableView.tableFooterView = pullupView
     }
-    
+  
     @objc private func loadData()  {
         
-        listViewModel.loadStatus { (isSuccessed) in
+        refreshControl?.beginRefreshing()
+        listViewModel.loadStatus(isPullup: pullupView.isAnimating) { (isSuccessed) in
             
-            //关闭刷新控件
+//            //关闭刷新控件
             self.refreshControl?.endRefreshing()
+            //关闭上拉刷新
+            self.pullupView.stopAnimating()
             
             if !isSuccessed {
                SVProgressHUD.showInfo(withStatus: "加载数据错误，稍后再试")
@@ -62,7 +66,14 @@ class HomeTableViewController: VisitorTableViewController {
             self.tableView.reloadData()
         }
     }
-       
+    
+    /// 懒加载控件
+    //上拉刷新提示图
+    private lazy var pullupView:UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        indicator.color = UIColor.lightGray
+        return indicator
+    }()
 }
 
 // MARK: - 数据源方法
@@ -85,6 +96,14 @@ extension HomeTableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusNormalCell.self)", for: indexPath) as! StatusCell
         }
         cell.viewModel = vm
+        
+        //判断是否最后一条微博
+        if indexPath.row == listViewModel.statusList.count - 1 && !pullupView.isAnimating {
+            //开始动画
+            pullupView.startAnimating()
+            //上拉刷新数据
+            loadData()
+        }
         return cell
     }
     

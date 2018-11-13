@@ -41,9 +41,11 @@ extension NetworkTools {
     
     /// 加载微博数据
     ///
+    ///since_id 若指定此参数，则返回 ID比 since_id大的微博，默认为0
+    ///max_id 若指定此参数，则返回 ID小于或等于max_id的微博，默认为0
     /// - Parameter finish: 完成回调
     /// - see: [http://open.weibo.com/wiki/2/statuses/home_timeline](http://open.weibo.com/wiki/2/statuses/home_timeline)
-    func loadStatus(finish:@escaping HKRequestCallBack)  {
+    func loadStatus(since_id:Int, max_id:Int, finish:@escaping HKRequestCallBack)  {
         
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
@@ -51,7 +53,15 @@ extension NetworkTools {
             finish(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
             return
         }
-        let params = [ "access_token":accessToken]
+        var params = [ "access_token":accessToken]
+        
+        //判断是否下拉
+        if since_id > 0 {
+            params["since_id"] = String(since_id)
+        }else if max_id > 0 {
+            //上拉参数
+            params["max_id"] = String(max_id - 1)
+        }
         request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
 }
