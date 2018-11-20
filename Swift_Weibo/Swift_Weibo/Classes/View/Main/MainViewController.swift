@@ -13,12 +13,23 @@ class MainViewController: UITabBarController {
     
     
     //MARK: - 监听方法
-    @objc func composeButtonClick()  {
-        print("dd")
-        
-        
-    }
     
+    /// 点击撰写按钮
+    /// 如果‘单纯’使用‘private’ 运行循环将无法正确发送消息，导致崩溃
+    /// 如果使用@objc 修饰符号，可以保证运行循环能够发送此消息，即时函数被标记为 private
+    @objc private func composeButtonClick()  {
+        print("点我了")
+        //先判断用户是否登录
+        var vc:UIViewController
+        if  UserAccountViewModel.sharedUserAccount.userLogon {
+            vc = ComposeViewController()
+        }else{
+            vc = OAuthViewController()
+        }
+        let nav = UINavigationController(rootViewController: vc)
+        
+        present(nav, animated: true, completion: nil)
+    }
 
     //MARK: - 生命周期函数
     override func viewDidLoad() {

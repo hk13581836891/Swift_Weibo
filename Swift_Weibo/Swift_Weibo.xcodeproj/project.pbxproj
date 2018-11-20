@@ -16,6 +16,8 @@
 		D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C902B212BEB2B0096BFF6 /* VisitorView.swift */; };
 		D383215921368977003FE31E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383215821368977003FE31E /* String+Extension.swift */; };
 		D383215D2136AC32003FE31E /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383215C2136AC32003FE31E /* UserAccount.swift */; };
+		D38ED65621A3BD3000F44DE3 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38ED65521A3BD3000F44DE3 /* ComposeViewController.swift */; };
+		D38ED65A21A4066A00F44DE3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38ED65921A4066A00F44DE3 /* UIBarButtonItem+Extension.swift */; };
 		D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928321212E8C7500D02D17 /* UILable+Extension.swift */; };
 		D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */; };
 		D3928326212EB61500D02D17 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3928325212EB61500D02D17 /* Common.swift */; };
@@ -61,6 +63,8 @@
 		D35C902B212BEB2B0096BFF6 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		D383215821368977003FE31E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D383215C2136AC32003FE31E /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		D38ED65521A3BD3000F44DE3 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		D38ED65921A4066A00F44DE3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		D3928321212E8C7500D02D17 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D3928325212EB61500D02D17 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				D3928323212E9CC400D02D17 /* UIImageView+Extension.swift */,
 				D383215821368977003FE31E /* String+Extension.swift */,
 				D3EB5A42213930E200CABADA /* UIColor+Extension.swift */,
+				D38ED65921A4066A00F44DE3 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -159,6 +164,14 @@
 				D39CD4FD2140D3A900C0A289 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D38ED65421A3BD0100F44DE3 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				D38ED65521A3BD3000F44DE3 /* ComposeViewController.swift */,
+			);
+			path = Compose;
 			sourceTree = "<group>";
 		};
 		D3934D6F212A66FA00C7886D = {
@@ -218,6 +231,7 @@
 		D3934D93212A9E7F00C7886D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D38ED65421A3BD0100F44DE3 /* Compose */,
 				D3A42D0D2135435E0049A4A0 /* OAuth */,
 				D3934D98212A9E7F00C7886D /* Main */,
 				D3934D94212A9E7F00C7886D /* Home */,
@@ -461,10 +475,12 @@
 				D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */,
 				D3CAF420218C58190098A8A4 /* WBRefreshControl.swift in Sources */,
 				D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */,
+				D38ED65A21A4066A00F44DE3 /* UIBarButtonItem+Extension.swift in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
 				D39CD50821412D8600C0A289 /* StatusCellBottomView.swift in Sources */,
 				D3992E0C213FCE7200A95554 /* Status.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
+				D38ED65621A3BD3000F44DE3 /* ComposeViewController.swift in Sources */,
 				D383215921368977003FE31E /* String+Extension.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
