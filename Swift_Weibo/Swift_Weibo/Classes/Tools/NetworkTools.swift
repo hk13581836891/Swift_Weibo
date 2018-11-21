@@ -36,6 +36,26 @@ class NetworkTools: AFHTTPSessionManager {
     
 }
 
+// MARK: - 发布微博
+extension NetworkTools {
+    
+    /// 发布微博
+    ///
+    /// - Parameters:
+    ///   - status: 微博文本
+    ///   - finish: 完成回调
+    /// - see: [http://open.weibo/wiki/2/statuses/update](http://open.weibo/wiki/2/statuses/update)
+    func sendStatuss(status: String, finish:@escaping HKRequestCallBack)  {
+        
+        var params = [String : Any]()
+        params["status"] = status
+        
+        //3 发起网络请求
+        let url = "https://api.weibo.com/2/statuses/share.json"
+        tokenRequest(method: RequestMethod.POST, URLString: url, parameters: params, finished: finish)
+        
+    }
+}
 // MARK: - 微博数据相关方法
 extension NetworkTools {
     
@@ -48,12 +68,7 @@ extension NetworkTools {
     func loadStatus(since_id:Int, max_id:Int, finish:@escaping HKRequestCallBack)  {
         
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
-            //通知调用方，token 无效
-            finish(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
-            return
-        }
-        var params = [ "access_token":accessToken]
+        var params = [String : Any]()
         
         //判断是否下拉
         if since_id > 0 {
@@ -62,7 +77,7 @@ extension NetworkTools {
             //上拉参数
             params["max_id"] = String(max_id - 1)
         }
-        request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
+        tokenRequest(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
@@ -77,15 +92,9 @@ extension NetworkTools {
     /// - see: [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
     func loadUserInfo(uid:String, finish:@escaping HKRequestCallBack) {
         let urlString = "https://api.weibo.com/2/users/show.json"
+        let params = ["uid":uid]
         
-        guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
-            //通知调用方，token 无效
-            finish(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
-            return
-        }
-        let params = ["uid":uid, "access_token":accessToken]
-        
-        request(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
+        tokenRequest(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
@@ -115,6 +124,35 @@ extension NetworkTools {
 
 //MARK: - 封装 AFN 网络方法
 extension NetworkTools{
+    
+    /// 使用 token 进行网络请求
+    ///
+    /// - Parameters:
+    ///   - method: GET / POST
+    ///   - URLString: URLString
+    ///   - parameters: 参数字典
+    ///   - finished: 完成回调
+     func tokenRequest(method:RequestMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
+        //1 设置 token参数 -> 将 token 添加到 paramenters
+        //判断 token是否有效
+        guard let accessToken = UserAccountViewModel.sharedUserAccount.accessToken else {
+            //通知调用方，token 无效
+            finished(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
+            return
+        }
+        //设置 parameters字典
+        //1>判断参数字典时否有值
+        var params = parameters
+        
+        if params == nil {
+            params = [String : AnyObject]()
+        }
+        params!["access_token"] = accessToken
+        
+        
+        //2 发起网络请求
+        request(method: method, URLString: URLString, parameters: params, finished: finished)
+    }
     
       private func request(method:RequestMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
 

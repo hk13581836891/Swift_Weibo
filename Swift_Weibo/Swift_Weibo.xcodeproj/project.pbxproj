@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3037FDD21A4FB43003687D5 /* HKEmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FD521A4FB42003687D5 /* HKEmoticonManager.swift */; };
+		D3037FDE21A4FB43003687D5 /* EmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FD621A4FB42003687D5 /* EmoticonAttachment.swift */; };
+		D3037FDF21A4FB43003687D5 /* HKEmoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FD821A4FB42003687D5 /* HKEmoticon.swift */; };
+		D3037FE021A4FB43003687D5 /* HKEmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FD921A4FB42003687D5 /* HKEmoticonPackage.swift */; };
+		D3037FE121A4FB43003687D5 /* HKEmoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3037FDA21A4FB42003687D5 /* HKEmoticons.bundle */; };
+		D3037FE221A4FB43003687D5 /* HKEmoticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FDB21A4FB42003687D5 /* HKEmoticonView.swift */; };
+		D3037FE321A4FB43003687D5 /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FDC21A4FB42003687D5 /* String+Emoji.swift */; };
+		D3037FE521A4FC06003687D5 /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3037FE421A4FC06003687D5 /* UITextView+Emoticon.swift */; };
 		D30AACDB2137E90800EE37FD /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */; };
 		D317384E216DEDF900E939DB /* StatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D317384D216DEDF900E939DB /* StatusRetweetedCell.swift */; };
 		D3453559212F9F7E000E9BC7 /* SoundTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3453558212F9F7E000E9BC7 /* SoundTools.swift */; };
@@ -52,6 +60,14 @@
 		2C01CE1CA45E9F1688560941 /* Pods-Swift_Weibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_Weibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swift_Weibo/Pods-Swift_Weibo.release.xcconfig"; sourceTree = "<group>"; };
 		53310AF4666B1717AB307204 /* Pods-Swift_Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swift_Weibo/Pods-Swift_Weibo.debug.xcconfig"; sourceTree = "<group>"; };
 		C1A1E5B17873A5FC68CC2D45 /* Pods_Swift_Weibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_Weibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3037FD521A4FB42003687D5 /* HKEmoticonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKEmoticonManager.swift; sourceTree = "<group>"; };
+		D3037FD621A4FB42003687D5 /* EmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonAttachment.swift; sourceTree = "<group>"; };
+		D3037FD821A4FB42003687D5 /* HKEmoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKEmoticon.swift; sourceTree = "<group>"; };
+		D3037FD921A4FB42003687D5 /* HKEmoticonPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKEmoticonPackage.swift; sourceTree = "<group>"; };
+		D3037FDA21A4FB42003687D5 /* HKEmoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HKEmoticons.bundle; sourceTree = "<group>"; };
+		D3037FDB21A4FB42003687D5 /* HKEmoticonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKEmoticonView.swift; sourceTree = "<group>"; };
+		D3037FDC21A4FB42003687D5 /* String+Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
+		D3037FE421A4FC06003687D5 /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
 		D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		D317384D216DEDF900E939DB /* StatusRetweetedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRetweetedCell.swift; sourceTree = "<group>"; };
 		D3453558212F9F7E000E9BC7 /* SoundTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTools.swift; sourceTree = "<group>"; };
@@ -122,6 +138,37 @@
 				2C01CE1CA45E9F1688560941 /* Pods-Swift_Weibo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D3037FD321A4FB42003687D5 /* Emoticon */ = {
+			isa = PBXGroup;
+			children = (
+				D3037FE421A4FC06003687D5 /* UITextView+Emoticon.swift */,
+				D3037FD421A4FB42003687D5 /* ViewModel */,
+				D3037FD621A4FB42003687D5 /* EmoticonAttachment.swift */,
+				D3037FD721A4FB42003687D5 /* Model */,
+				D3037FDA21A4FB42003687D5 /* HKEmoticons.bundle */,
+				D3037FDB21A4FB42003687D5 /* HKEmoticonView.swift */,
+				D3037FDC21A4FB42003687D5 /* String+Emoji.swift */,
+			);
+			path = Emoticon;
+			sourceTree = "<group>";
+		};
+		D3037FD421A4FB42003687D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3037FD521A4FB42003687D5 /* HKEmoticonManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D3037FD721A4FB42003687D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3037FD821A4FB42003687D5 /* HKEmoticon.swift */,
+				D3037FD921A4FB42003687D5 /* HKEmoticonPackage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D30AACD72137E87B00EE37FD /* ViewModel */ = {
@@ -219,6 +266,7 @@
 		D3934D91212A9E7F00C7886D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D3037FD321A4FB42003687D5 /* Emoticon */,
 				D35C9024212BB2CB0096BFF6 /* Extension */,
 				D3928325212EB61500D02D17 /* Common.swift */,
 				D39A5D33213E899D00DD9552 /* Dispatch.swift */,
@@ -387,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3037FE121A4FB43003687D5 /* HKEmoticons.bundle in Resources */,
 				D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */,
 				D3CAF424218C5BBB0098A8A4 /* WBRefreshView.xib in Resources */,
 			);
@@ -463,6 +512,7 @@
 				D317384E216DEDF900E939DB /* StatusRetweetedCell.swift in Sources */,
 				D3EB5A43213930E200CABADA /* UIColor+Extension.swift in Sources */,
 				D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */,
+				D3037FDE21A4FB43003687D5 /* EmoticonAttachment.swift in Sources */,
 				D3934DA0212AA28400C7886D /* HomeTableViewController.swift in Sources */,
 				D3F9C23A213D11310036860E /* WelcomViewController.swift in Sources */,
 				D383215D2136AC32003FE31E /* UserAccount.swift in Sources */,
@@ -481,13 +531,18 @@
 				D3992E0C213FCE7200A95554 /* Status.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
 				D38ED65621A3BD3000F44DE3 /* ComposeViewController.swift in Sources */,
+				D3037FDD21A4FB43003687D5 /* HKEmoticonManager.swift in Sources */,
 				D383215921368977003FE31E /* String+Extension.swift in Sources */,
+				D3037FDF21A4FB43003687D5 /* HKEmoticon.swift in Sources */,
 				D3934D7C212A66FA00C7886D /* AppDelegate.swift in Sources */,
+				D3037FE321A4FB43003687D5 /* String+Emoji.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
 				D30AACDB2137E90800EE37FD /* UserAccountViewModel.swift in Sources */,
 				D3BC80AB214769B600A0DDA9 /* StatusPictureView.swift in Sources */,
+				D3037FE521A4FC06003687D5 /* UITextView+Emoticon.swift in Sources */,
 				D39CD50621412D7400C0A289 /* StatusCellTopView.swift in Sources */,
+				D3037FE221A4FB43003687D5 /* HKEmoticonView.swift in Sources */,
 				D3928324212E9CC400D02D17 /* UIImageView+Extension.swift in Sources */,
 				D35C902C212BEB2B0096BFF6 /* VisitorView.swift in Sources */,
 				D3934D9E212AA23C00C7886D /* MainViewController.swift in Sources */,
@@ -495,6 +550,7 @@
 				D3B73199213911E80031C676 /* NewFeatureViewController.swift in Sources */,
 				D3B32D42218AEA9E00E4CE9D /* StatusNormalCell.swift in Sources */,
 				D3453559212F9F7E000E9BC7 /* SoundTools.swift in Sources */,
+				D3037FE021A4FB43003687D5 /* HKEmoticonPackage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,7 @@ class OAuthViewController: UIViewController {
         webView.delegate = self
         
         //设置导航栏
-        title = "登录新浪文博"
+        title = "登录新浪微博"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.plain, target: self, action: #selector(close))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", style: UIBarButtonItemStyle.plain, target: self, action: #selector(autoFill))
     }
