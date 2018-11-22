@@ -28,7 +28,7 @@ class ComposeViewController: UIViewController {
         //1 获得文本内容
         let text = textView.emoticonText
         //2 发布微博
-        NetworkTools.sharedTools.sendStatuss(status: text) { (result, error) in
+        NetworkTools.sharedTools.sendStatuss(status: text, image: nil) { (result, error) in
 //            if error != nil {
 //                print("出错了")
 //                SVProgressHUD.showInfo(withStatus: "您的网络不给力")
