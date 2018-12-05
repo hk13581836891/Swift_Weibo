@@ -45,12 +45,16 @@ extension UIButton{
     ///   - title: 字体大小
     ///   - color: textColor
     ///   - imageName: 图像名称
-    convenience init(title:String, fontSize:CGFloat, color:UIColor = UIColor.darkGray, imageName:String){
+    ///   - backColor: 背景颜色,默认为nil
+    convenience init(title:String, fontSize:CGFloat, color:UIColor = UIColor.darkGray, imageName:String? , backColor:UIColor? = nil){
         self.init()
         
         setTitle(title, for: UIControlState.normal)
         setTitleColor(color, for: UIControlState.normal)
-        setImage(UIImage(named: imageName), for: UIControlState.normal)
+        if let imageName = imageName {
+          setImage(UIImage(named: imageName), for: UIControlState.normal)
+        }
+        backgroundColor = backColor
         titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         
         sizeToFit()

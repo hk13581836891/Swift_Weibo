@@ -46,6 +46,7 @@ class StatusPictureView: UICollectionView {
         //设置数据源, 自己做自己的数据源
         //应用场景：自定义视图的小框架
         dataSource = self
+        delegate = self
         
         //注册可重用 cell
         register(StatusPictureViewCell.self, forCellWithReuseIdentifier: "\(StatusPictureViewCell.self)")
@@ -57,7 +58,14 @@ class StatusPictureView: UICollectionView {
 }
 
 // MARK: - 数据源方法
-extension StatusPictureView : UICollectionViewDataSource {
+extension StatusPictureView : UICollectionViewDataSource , UICollectionViewDelegate {
+    
+    
+    /// 选中照片
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //传递当前 URL数组/ 当前用户选中索引
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self, userInfo: [WBStatusSelectedPhotoIndexPathKey:indexPath, WBStatusSelectedPhotoURLsKey:viewModel!.thumbnailUrls!])
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.thumbnailUrls?.count ?? 0
@@ -133,8 +141,10 @@ private class StatusPictureViewCell : UICollectionViewCell {
     
     var imgurl:URL?{
         didSet{
+            /* SDWebImageOptions.refreshCached 第一次发起网络请求时，把缓存图片的一个 hash值发送给服务器，服务器对比 hash值，如果和服务器内容一致，服务器返回的状态码是304，表示服务器内容么有变化，如果不是304，则会再次发起网络请求，获得更新后的内容。
+             */
             imgView.sd_setImage(with: imgurl, placeholderImage: nil, //在调用 oc框架时，可/必选项不严格
-                options: [SDWebImageOptions.retryFailed , //SD超时时长15s,一旦超时会记入黑名单，下次不再下载，而retryFailed则是让下载失败的图片不计入黑名单
+                options: [SDWebImageOptions.retryFailed , //SD超时时长15s,一旦超时会记入黑名单，下次不再下载，而retryFailed则是让下载失败的图片不计入黑名单,失败后会再次请求下载
                  SDWebImageOptions.refreshCached],//如果 URL 不变，图片变了，则能及时请求新图片，而不用缓存旧图片
                                 completed: nil)
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 最大选择照片数量
 private let PicturePickerMaxCount = 8
 
 class HKPicturePickerController: UICollectionViewController {
@@ -103,8 +104,8 @@ extension HKPicturePickerController : PicturePickerCellDelegate{
         let index = collectionView?.indexPath(for: cell)!
         //刷新视图
         pictures.remove(at: (index?.item)!)
-//        collectionView?.reloadData()
-        collectionView?.deleteItems(at: [index!])//动画刷新视图
+        collectionView?.reloadData()
+//        collectionView?.deleteItems(at: [index!])//动画刷新视图
     }
 }
 

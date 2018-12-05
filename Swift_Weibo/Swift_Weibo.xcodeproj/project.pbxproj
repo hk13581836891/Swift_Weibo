@@ -36,6 +36,8 @@
 		D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */; };
 		D3934DA6212AA2C000C7886D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */; };
 		D3934DA8212AA36800C7886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3934DA7212AA36800C7886D /* Assets.xcassets */; };
+		D3961D7121B7767B00D28564 /* HKPhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3961D7021B7767B00D28564 /* HKPhotoBrowserViewController.swift */; };
+		D3961D7321B7A18700D28564 /* HKPhotoBrowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3961D7221B7A18700D28564 /* HKPhotoBrowerCell.swift */; };
 		D3992E0C213FCE7200A95554 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3992E0B213FCE7200A95554 /* Status.swift */; };
 		D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A5D33213E899D00DD9552 /* Dispatch.swift */; };
 		D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */; };
@@ -94,6 +96,8 @@
 		D3934DA3212AA2AF00C7886D /* DiscoveryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewController.swift; sourceTree = "<group>"; };
 		D3934DA5212AA2C000C7886D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		D3934DA7212AA36800C7886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3961D7021B7767B00D28564 /* HKPhotoBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKPhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		D3961D7221B7A18700D28564 /* HKPhotoBrowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKPhotoBrowerCell.swift; sourceTree = "<group>"; };
 		D3992E0B213FCE7200A95554 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		D39A5D33213E899D00DD9552 /* Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 		D3934D91212A9E7F00C7886D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D3961D6C21B76AA700D28564 /* PhotoBrowser */,
 				D3B8B44021A7E42C00B71409 /* PicturePicker */,
 				D3B8B44121A7E45700B71409 /* HKPicturePickerController.swift */,
 				D3037FD321A4FB42003687D5 /* Emoticon */,
@@ -339,6 +344,15 @@
 				D3934D9D212AA23C00C7886D /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D3961D6C21B76AA700D28564 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				D3961D7021B7767B00D28564 /* HKPhotoBrowserViewController.swift */,
+				D3961D7221B7A18700D28564 /* HKPhotoBrowerCell.swift */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		D39CD50221412D3400C0A289 /* StatusCell */ = {
@@ -553,6 +567,8 @@
 				D3037FE321A4FB43003687D5 /* String+Emoji.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
+				D3961D7321B7A18700D28564 /* HKPhotoBrowerCell.swift in Sources */,
+				D3961D7121B7767B00D28564 /* HKPhotoBrowserViewController.swift in Sources */,
 				D30AACDB2137E90800EE37FD /* UserAccountViewModel.swift in Sources */,
 				D3B8B43F21A7E3A200B71409 /* UIImage+Extension.swift in Sources */,
 				D3BC80AB214769B600A0DDA9 /* StatusPictureView.swift in Sources */,
