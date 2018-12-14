@@ -37,7 +37,8 @@ class HKPhotoBrowserViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     override func loadView() {
-        let rect = UIScreen.main.bounds
+        var rect = UIScreen.main.bounds
+        rect.size.width += 20
         view = UIView(frame: rect)
         view.backgroundColor = UIColor.white
         
@@ -63,7 +64,6 @@ class HKPhotoBrowserViewController: UIViewController {
             minimumLineSpacing = 0
             minimumInteritemSpacing = 0
             scrollDirection = .horizontal
-            sectionInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
             
             collectionView?.isPagingEnabled = true
             collectionView?.bounces = false
@@ -98,7 +98,7 @@ private extension HKPhotoBrowserViewController {
     }
     
     private func prepareCollectionView() {
-        collectionView.register(HKPhotoBrowerCell.self, forCellWithReuseIdentifier: "\(HKPhotoBrowerCell.self)")
+        collectionView.register(HKPhotoBrowserCell.self, forCellWithReuseIdentifier: "\(HKPhotoBrowserCell.self)")
         
         collectionView.dataSource = self
     }
@@ -111,8 +111,8 @@ extension HKPhotoBrowserViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HKPhotoBrowerCell.self)", for: indexPath) as! HKPhotoBrowerCell
-        cell.backgroundColor = UIColor.randomColor
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HKPhotoBrowserCell.self)", for: indexPath) as! HKPhotoBrowserCell
+        cell.backgroundColor = UIColor.black
         cell.imageUrl = urls[indexPath.item]
         return cell
     }
