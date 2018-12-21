@@ -8,10 +8,26 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
+protocol HKPhotoBrowserCellDelegate:NSObjectProtocol {
+    func photoBrowserCellDidTapImage()
+}
 /// 照片查看 cell
 class HKPhotoBrowserCell: UICollectionViewCell {
     
+    weak var photoDelegate:HKPhotoBrowserCellDelegate?
+    
+    //MARK: - 监听方法
+    @objc private func tapImage() {
+        photoDelegate?.photoBrowserCellDidTapImage()
+    }
+    //手势识别是对 touch的一个封装，UIScrollView支持捏合手势，一般做过手势监听的控件，都会屏蔽掉 touch事件
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch")
+    }
+    
+    //MARK: - 图像地址
     var imageUrl:URL?{
         didSet{
             guard let url = imageUrl else {
@@ -37,14 +53,16 @@ class HKPhotoBrowserCell: UICollectionViewCell {
             imageView.sd_setImage(with: self.bmiddleURL(url: url),
             placeholderImage: placeholderImage,
             options: [SDWebImageOptions.retryFailed, SDWebImageOptions.refreshCached],
-            progress: { (current, total, _) in
+            progress: { (current, total, _) in//progress在非主线程
                 //更新进度
                 DispatchQueue.main.async {
                     self.placeholder.progress = CGFloat(current) / CGFloat(total)
                 }
-            }) { (image, _, _, _) in
-                print(Thread.current)
-                guard image != nil else {return}
+            }) { (image, _, _, _) in//完成后回到主线程
+                guard image != nil else {
+                    SVProgressHUD.showInfo(withStatus: "网络不给力")
+                    return
+                }
                 self.placeholder.isHidden = true
                 self.imageViewShowImage(image: image)
             }
@@ -146,10 +164,15 @@ class HKPhotoBrowserCell: UICollectionViewCell {
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 2.0
+        
+        //添加手势识别
+        let tapImageView = UITapGestureRecognizer(target: self, action: #selector(tapImage))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapImageView)
     }
     //MARK: - 懒加载控件
-    private lazy var scrollView:UIScrollView = UIScrollView()
-    private lazy var imageView:UIImageView = UIImageView()
+    lazy var scrollView:UIScrollView = UIScrollView()
+    lazy var imageView:UIImageView = UIImageView()
     //占位图像
     private lazy var placeholder:HKPhotoBrowserProgressView = HKPhotoBrowserProgressView.init(frame:CGRect.zero);
 //    private lazy var placeHolder:HKPhotoBrowserProgressView = HKPhotoBrowserProgressView.init(frame:CGRect(origin: CGPoint.zero, size: CGSize(width: 80, height: 80)))

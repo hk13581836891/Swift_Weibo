@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /// 照片浏览器
 class HKPhotoBrowserViewController: UIViewController {
@@ -22,7 +23,21 @@ class HKPhotoBrowserViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @objc func save() {
-        print("保存照片")
+        //1 拿到图片
+        let cell = collectionView.visibleCells[0] as! HKPhotoBrowserCell
+        //imageView中很可能会因为网络问题没有图片 -> 下载需要提示
+        guard let image = cell.imageView.image else {
+            return
+        }
+        //2 保存图片
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
+        
+    }
+    // 3 实现相应的函数
+    
+    @objc private func saveImage(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        let message = error == nil ? "保存成功" : "保存失败"
+        SVProgressHUD.showInfo(withStatus: message)
     }
     
     //MARK: - 构造函数 属性都是必选,不用在后续考虑解包的问题
@@ -36,6 +51,8 @@ class HKPhotoBrowserViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //和 xib&sb 是等价的，主要职责创建视图层次结构，loadView 函数执行完毕，view上的元素要全部创建完成
+    //如果 view == nil ，系统会在调用 view的 getter方法时，自动调用 loadview，创建 view
     override func loadView() {
         var rect = UIScreen.main.bounds
         rect.size.width += 20
@@ -44,10 +61,14 @@ class HKPhotoBrowserViewController: UIViewController {
         
         setupUI()
     }
+    //是视图加载完成被调用，loadView执行完毕后执行
+    //主要做数据加载或其他处理
     override func viewDidLoad() {
         super.viewDidLoad()
         print(self.urls)
         print(self.currentIndexPath)
+        //让 collectionView滚动到指定位置
+        collectionView.scrollToItem(at: currentIndexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
     }
     
     //MARK: - 懒加载控件
@@ -114,11 +135,18 @@ extension HKPhotoBrowserViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HKPhotoBrowserCell.self)", for: indexPath) as! HKPhotoBrowserCell
         cell.backgroundColor = UIColor.black
         cell.imageUrl = urls[indexPath.item]
+        cell.photoDelegate = self//设置代理
         return cell
     }
 }
 
-
+// MARK: - HKPhotoBrowserCellDelegate
+extension HKPhotoBrowserViewController:HKPhotoBrowserCellDelegate{
+    func photoBrowserCellDidTapImage() {
+        //关闭控制器
+        close()
+    }
+}
 
 
 
