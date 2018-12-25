@@ -60,13 +60,6 @@ class StatusPictureView: UICollectionView {
 // MARK: - 数据源方法
 extension StatusPictureView : UICollectionViewDataSource , UICollectionViewDelegate {
     
-    
-    /// 选中照片
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //传递当前 URL数组/ 当前用户选中索引
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self, userInfo: [WBStatusSelectedPhotoIndexPathKey:indexPath, WBStatusSelectedPhotoURLsKey:viewModel!.thumbnailUrls!])
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.thumbnailUrls?.count ?? 0
     }
@@ -76,10 +69,48 @@ extension StatusPictureView : UICollectionViewDataSource , UICollectionViewDeleg
         cell.imgurl = viewModel?.thumbnailUrls?[indexPath.item]
         
         return cell
+    }
+    /// 选中照片
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //测试动画转场协议函数
+        photoBrowserPresentFromRect(indexPath: indexPath)
         
+        //传递当前 URL数组/ 当前用户选中索引
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self, userInfo: [WBStatusSelectedPhotoIndexPathKey:indexPath, WBStatusSelectedPhotoURLsKey:viewModel!.thumbnailUrls!])
     }
 }
-
+// MARK: - HKPhotoBrowserPresentDelegate照片查看器的展现协议
+extension StatusPictureView : HKPhotoBrowserPresentDelegate{
+    //创建一个 imageview 参与动画
+    func imageViewForPresent(indexPath: IndexPath) -> UIImageView {
+        let iv = UIImageView()
+        //设置填充模式
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        
+        //设置图像（缩略图的缓存）
+        if let url =  viewModel?.thumbnailUrls?[indexPath.row] {
+            iv.sd_setImage(with: url, completed: nil)
+        }
+        return iv
+    }
+    //动画起始位置
+    func photoBrowserPresentFromRect(indexPath: IndexPath) -> CGRect {
+        //1 根据 indexpath 获取当前用户选择的 cell
+        let cell = self.cellForItem(at: indexPath)!
+        //2 通过 cell知道 cell对应在屏幕上的准确位置
+        //在不同视图之间的‘坐标系的转换’,self.是 cell的父视图，由父视图进行转换，所以使用self.convert
+        //由 colletionView将 cell 的 frame位置转换为 keyWindow对应的 frame位置
+        let rect = self.convert(cell.frame, to: UIApplication.shared.keyWindow)
+        return rect
+	    }
+    
+    func photoBrowserPresentToRect(indexPath: IndexPath) -> CGRect {
+        return CGRect.zero
+    }
+    
+    
+}
 // MARK: - 计算视图大小
 extension StatusPictureView {
     
@@ -177,6 +208,7 @@ private class StatusPictureViewCell : UICollectionViewCell {
         return imgView
     }()
 }
+
 
 
 

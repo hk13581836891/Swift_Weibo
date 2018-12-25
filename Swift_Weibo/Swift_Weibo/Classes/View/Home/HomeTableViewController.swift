@@ -38,7 +38,12 @@ class HomeTableViewController: VisitorTableViewController {
             }
             let vc = HKPhotoBrowserViewController(urls: urls, indexPath: indexPath)
             
-            //modal显示
+            //💕💗💕💗💕💗💕💗自定义转场
+            //1 设置modal的类型是自定义类型
+            vc.modalPresentationStyle = UIModalPresentationStyle.custom
+            //2 设置动画代理
+            vc.transitioningDelegate = self?.photoBrowserAnimator
+            //3 modal显示
             self?.present(vc, animated: true, completion: nil)
         }
     }
@@ -86,13 +91,15 @@ class HomeTableViewController: VisitorTableViewController {
         }
     }
     
-    /// 懒加载控件
+    //MARK: - 懒加载控件
     //上拉刷新提示图
     private lazy var pullupView:UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         indicator.color = UIColor.lightGray
         return indicator
     }()
+    //照片查看转场动画代理
+    private lazy var photoBrowserAnimator:HKPhotoBrowserAnimator = HKPhotoBrowserAnimator()
 }
 
 // MARK: - 数据源方法
@@ -171,6 +178,7 @@ extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath)")
+        
     }
 }
 

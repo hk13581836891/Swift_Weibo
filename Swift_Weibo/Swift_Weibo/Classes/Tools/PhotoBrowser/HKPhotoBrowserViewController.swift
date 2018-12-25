@@ -108,7 +108,7 @@ private extension HKPhotoBrowserViewController {
         }
         saveBtn.snp.makeConstraints { (make) in
             make.bottom.equalTo(view).offset(-StatusCellMargin)
-            make.right.equalTo(view).offset(-StatusCellMargin)
+            make.right.equalTo(view).offset(-StatusCellMargin - 20)
             make.size.equalTo(CGSize(width: 100, height: 36))
         }
         
