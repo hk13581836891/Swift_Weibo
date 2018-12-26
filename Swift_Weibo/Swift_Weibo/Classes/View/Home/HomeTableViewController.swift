@@ -36,6 +36,9 @@ class HomeTableViewController: VisitorTableViewController {
             guard let urls = n.userInfo?[WBStatusSelectedPhotoURLsKey] as? [URL] else {
                 return
             }
+            guard let picView = n.object as? HKPhotoBrowserPresentDelegate else {
+                return
+            }
             let vc = HKPhotoBrowserViewController(urls: urls, indexPath: indexPath)
             
             //💕💗💕💗💕💗💕💗自定义转场
@@ -43,6 +46,8 @@ class HomeTableViewController: VisitorTableViewController {
             vc.modalPresentationStyle = UIModalPresentationStyle.custom
             //2 设置动画代理
             vc.transitioningDelegate = self?.photoBrowserAnimator
+            //设置 animator的代理参数
+            self?.photoBrowserAnimator.setDelegateParams(presentDelegate: picView, indexPath: indexPath, dismissDelegate:vc)
             //3 modal显示
             self?.present(vc, animated: true, completion: nil)
         }

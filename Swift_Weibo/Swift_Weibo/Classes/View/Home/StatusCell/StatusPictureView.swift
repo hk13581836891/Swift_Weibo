@@ -72,9 +72,7 @@ extension StatusPictureView : UICollectionViewDataSource , UICollectionViewDeleg
     }
     /// 选中照片
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //测试动画转场协议函数
-        photoBrowserPresentFromRect(indexPath: indexPath)
-        
+
         //传递当前 URL数组/ 当前用户选中索引
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBStatusSelectedPhotoNotification), object: self, userInfo: [WBStatusSelectedPhotoIndexPathKey:indexPath, WBStatusSelectedPhotoURLsKey:viewModel!.thumbnailUrls!])
     }
@@ -104,12 +102,29 @@ extension StatusPictureView : HKPhotoBrowserPresentDelegate{
         let rect = self.convert(cell.frame, to: UIApplication.shared.keyWindow)
         return rect
 	    }
-    
+    //目标位置
     func photoBrowserPresentToRect(indexPath: IndexPath) -> CGRect {
-        return CGRect.zero
+        //根据缩略图的大小等比例计算目标位置
+        guard let key = viewModel?.thumbnailUrls?[indexPath.item].absoluteString else {
+            return CGRect.zero
+        }
+        //从 sdwebimage获取本地缓存图片
+        guard let image = SDWebImageManager.shared().imageCache?.imageFromDiskCache(forKey: key) else {
+            return CGRect.zero
+        }
+        //根据图像大小计算全屏大小
+        let w = UIScreen.main.bounds.width
+        let h = image.size.height * w / image.size.width
+        
+        //对高度进行额外处理
+        let screenHeight = UIScreen.main.bounds.height
+        var y:CGFloat = 0
+        if h < screenHeight {
+            y = (screenHeight - h) * 0.5
+        }
+        let rect = CGRect(x: 0, y: y, width: w, height: h)
+        return rect
     }
-    
-    
 }
 // MARK: - 计算视图大小
 extension StatusPictureView {

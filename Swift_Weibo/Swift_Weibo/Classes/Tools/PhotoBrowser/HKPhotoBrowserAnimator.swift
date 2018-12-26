@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 //MARK: - 展现动画协议
 protocol HKPhotoBrowserPresentDelegate:NSObjectProtocol {
     
@@ -19,13 +20,40 @@ protocol HKPhotoBrowserPresentDelegate:NSObjectProtocol {
     /// 动画转场的目标位置
     func photoBrowserPresentToRect(indexPath:IndexPath) ->CGRect
 }
-
+//MARK: - 解除动画协议
+protocol HKPhotoBrowserDismissDelegate:NSObjectProtocol {
+    
+    //解除转场图像视图（包含起始位置）
+    func imageViewForDismiss() -> UIImageView
+    //解除转场图像索引
+    func indexPathForDismiss() -> IndexPath
+}
 //MARK: - 提供动画转场的‘代理’
 class HKPhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate {
     
+    //展现代理
+    weak var presentDelegate: HKPhotoBrowserPresentDelegate?
+    //解除动画转场代理
+    weak var dismissDelegate: HKPhotoBrowserDismissDelegate?
+    //动画图像索引
+    var indexPath:IndexPath?
     //是否 modal展现的标记
     private var isPresented = false
     
+    
+    /// 设置代理相关参数
+    ///
+    /// - Parameters:
+    ///   - presentDelegate: 展现代理对象
+    ///   - indexPath: 图像索引
+    func setDelegateParams(presentDelegate:HKPhotoBrowserPresentDelegate,
+                           indexPath:IndexPath,
+                           dismissDelegate: HKPhotoBrowserDismissDelegate) {
+        
+        self.presentDelegate = presentDelegate
+        self.dismissDelegate = dismissDelegate
+        self.indexPath = indexPath
+    }
     //返回提供（modal 展现）‘动画的对象’ - UIViewControllerAnimatedTransitioning
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresented = true
@@ -43,7 +71,7 @@ class HKPhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate {
 extension HKPhotoBrowserAnimator : UIViewControllerAnimatedTransitioning{
     //动画时长
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 2
+        return 0.5
     }
     
     ///实现具体动画效果 - 一旦实现了此方法，所有的动画代码都交由程序员负责
@@ -74,29 +102,60 @@ extension HKPhotoBrowserAnimator : UIViewControllerAnimatedTransitioning{
     }
     //解除转场动画
     private func dismissAnimation(transitionContext: UIViewControllerContextTransitioning) {
+        
+        guard let presentDelegate = presentDelegate , let dismissDelegate = dismissDelegate else {
+            return
+        }
         //1.获取要 dismiss的控制器的视图
         let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from)
+        fromView?.removeFromSuperview()
+        
+        //2 获取图像视图
+        let iv = dismissDelegate.imageViewForDismiss()
+        transitionContext.containerView.addSubview(iv)
+        
+        //3 获取 dismiss的 indexPath
+        let indexPath = dismissDelegate.indexPathForDismiss()
+        
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            fromView?.alpha = 0
+            //让 iv运动到目标位置
+            iv.frame = presentDelegate.photoBrowserPresentFromRect(indexPath: indexPath)
         }) { (_) in
-            //将 from从父视图中移除
-            fromView?.removeFromSuperview()
+            //将iv从父视图中移除
+            iv.removeFromSuperview()
             //告诉系统转场动画完成
             transitionContext.completeTransition(true)
         }
     }
+    //展现动画
     private func presenAnimation(transitionContext: UIViewControllerContextTransitioning) {
         
+        //判断参数是否存在
+        guard let presentDelegate = presentDelegate, let indexPath = indexPath else {
+            return
+        }
+        //目标视图
         //1.获取 modal 要展现的控制器的视图
         let toView = transitionContext.view(forKey: UITransitionContextViewKey.to)!
         //2.将视图添加到容器视图中
         transitionContext.containerView.addSubview(toView)
+        
+        //图像视图
+        //0 能够拿到参与动画的图像视图、、目标位置
+        let iv = presentDelegate.imageViewForPresent(indexPath: indexPath)
+        //起始位置
+        iv.frame = presentDelegate.photoBrowserPresentFromRect(indexPath: indexPath)
+        transitionContext.containerView.addSubview(iv)
+        
         toView.alpha = 0
         
         //3 开始动画
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+            iv.frame = presentDelegate.photoBrowserPresentToRect(indexPath: indexPath)
             toView.alpha = 1
         }) { (_) in
+            //将图像视图删除
+            iv.removeFromSuperview()
             //告诉系统转场动画完成
             transitionContext.completeTransition(true)
         }

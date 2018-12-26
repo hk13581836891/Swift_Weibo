@@ -148,7 +148,28 @@ extension HKPhotoBrowserViewController:HKPhotoBrowserCellDelegate{
     }
 }
 
-
+// MARK: - HKPhotoBrowserDismissDelegate
+extension HKPhotoBrowserViewController:HKPhotoBrowserDismissDelegate{
+    func imageViewForDismiss() -> UIImageView {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        
+        //从当前显示的 cell中获取图像
+        let cell = collectionView.visibleCells[0] as! HKPhotoBrowserCell
+        iv.image = cell.imageView.image
+        
+        //设置转换 - 坐标转换（由父视图进行）
+        iv.frame = cell.scrollView.convert(cell.imageView.frame, to: UIApplication.shared.keyWindow)
+        return iv
+    }
+    
+    func indexPathForDismiss() -> IndexPath {
+        return collectionView.indexPathsForVisibleItems[0]
+    }
+    
+    
+}
 
 
 
