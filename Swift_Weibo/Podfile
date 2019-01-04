@@ -8,6 +8,7 @@ pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'SnapKit'
+pod 'Alamofire'
 
   # Pods for Swift_Weibo
 
