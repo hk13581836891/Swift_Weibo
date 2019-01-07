@@ -1,32 +1,43 @@
 //
-//  NetworkTools.swift
+//  NetworkToolsAFN.swift
 //  Swift_Weibo
 //
-//  Created by houke on 2018/8/28.
-//  Copyright © 2018年 houke. All rights reserved.
+//  Created by houke on 2019/1/7.
+//  Copyright © 2019年 houke. All rights reserved.
 //
 
 import UIKit
-import Alamofire
+import AFNetworking
+
+//http 请求方法枚举
+enum RequestMethod:String {
+    case GET = "GET"
+    case POST = "POST"
+}
 
 //MARK: - 网络工具
-class NetworkTools {
+class NetworkToolsAFN: AFHTTPSessionManager {
     
     // MARK: - 应用程序信息
     private let appKey = "3672008672"
     private let appSecret = "4474565be8f9e77dfbfff1c25c5d7f28"
     private let reDirectUrl = "http://www.baidu.com"//重定向地址
-
+    
     ///网络请求完成回调, 类似于 oc的 typeDefine
     typealias HKRequestCallBack = (Any?, Error?) -> ()
     
     //单例
-    static let sharedTools = NetworkTools()
+    static let sharedTools:NetworkToolsAFN = {
+        let tools = NetworkToolsAFN(baseURL: nil)
+        //设置反序列化数据格式 - 系统会自动将 OC 框架中的 NSSet 转换成 Set
+        tools.responseSerializer.acceptableContentTypes?.insert("text/html")
+        return tools
+    }()
     
 }
 
 // MARK: - 发布微博
-extension NetworkTools {
+extension NetworkToolsAFN {
     
     /// 发布微博
     ///
@@ -44,7 +55,7 @@ extension NetworkTools {
         //判断是否上传图片
         if image == nil {
             // 发起网络请求
-            tokenRequest(method: .post, URLString: url, parameters: params, finished: finish)
+            tokenRequest(method: RequestMethod.POST, URLString: url, parameters: params, finished: finish)
         }else{
             let data = UIImagePNGRepresentation(image!)
             upload(URLString: url, data: data!, name: "pic", parameters: params, finished: finish)
@@ -52,7 +63,7 @@ extension NetworkTools {
     }
 }
 // MARK: - 微博数据相关方法
-extension NetworkTools {
+extension NetworkToolsAFN {
     
     /// 加载微博数据
     ///
@@ -72,12 +83,12 @@ extension NetworkTools {
             //上拉参数
             params["max_id"] = String(max_id - 1)
         }
-        tokenRequest(method: .get, URLString: urlString, parameters: params, finished: finish)
+        tokenRequest(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
 //MARK: - 用户相关方法
-extension NetworkTools {
+extension NetworkToolsAFN {
     
     /// 加载用户信息
     ///
@@ -89,12 +100,12 @@ extension NetworkTools {
         let urlString = "https://api.weibo.com/2/users/show.json"
         let params = ["uid":uid]
         
-        tokenRequest(method: .get, URLString: urlString, parameters: params, finished: finish)
+        tokenRequest(method: RequestMethod.GET, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
 //MARK: - OAuth 相关方法
-extension NetworkTools {
+extension NetworkToolsAFN {
     /// OAuth 授权 url
     /// - see: [http://open.weibo.com/wiki/Oauth2/authorize](http://open.weibo.com/wiki/Oauth2/authorize)
     var oauthULR:URL {
@@ -113,12 +124,12 @@ extension NetworkTools {
                       "code":code,
                       "redirect_uri":reDirectUrl]
         
-        request(method: .get, URLString: urlString, parameters: params, finished: finish)
+        request(method: RequestMethod.POST, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
 //MARK: - 封装 AFN 网络方法
-extension NetworkTools{
+extension NetworkToolsAFN{
     
     
     /// 向 parameters字典中追加 token 参数
@@ -145,7 +156,7 @@ extension NetworkTools{
     ///   - URLString: URLString
     ///   - parameters: 参数字典
     ///   - finished: 完成回调
-     func tokenRequest(method:Alamofire.HTTPMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
+    func tokenRequest(method:RequestMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
         //1 设置 token参数 -> 将 token 添加到 paramenters
         var params = parameters
         if parameters == nil {
@@ -160,15 +171,22 @@ extension NetworkTools{
         request(method: method, URLString: URLString, parameters: params, finished: finished)
     }
     
-      private func request(method:Alamofire.HTTPMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
-        Alamofire.request(URLString, method: method, parameters: parameters).responseJSON { (response) in
-            //判断是否失败
-            if response.result.isFailure{
-                //开发网络模块，错误不要提示给用户，但错误一定要输出
-                print("网络请求失败 \(String(describing: response.result.error))")
-            }
-            //完成回调
-            finished(response.result.value, response.result.error)
+    private func request(method:RequestMethod, URLString:String, parameters:[String : Any]?, finished:@escaping HKRequestCallBack)  {
+        
+        let progress = {(progress: Progress) in}
+        let success = { (task: URLSessionDataTask, result:Any?) in
+            finished(result, nil)
+        }
+        let failure = { (task: URLSessionDataTask?, error:Error) in
+            
+            print(error)
+            finished(nil, error)
+        }
+        
+        if method == RequestMethod.GET{
+            get(URLString, parameters: parameters, progress: progress, success: success , failure: failure)
+        }else{
+            post(URLString, parameters: parameters, progress: progress, success: success , failure: failure)
         }
     }
     //上传文件
@@ -183,70 +201,35 @@ extension NetworkTools{
             finished(nil, NSError(domain: "cn.houke.error", code: -1001, userInfo: ["message" : "token为空"]) as Error)
             return
         }
-        //2 Alamofire上传文件
-        /**
-         append 方法中，如果带 mineType 是拼接上传文件的方法
-         append 方法中，如果不带 mineType 是拼接普通二进制参数的方法 
-         */
-        Alamofire.upload(multipartFormData: { (formData) in
-            //拼接上传文件的二进制数据
-            formData.append(data, withName: name, fileName: "xxx", mimeType: "application/octet-stream")
-            
-            //遍历参数字典，生成对应的参数数据
-            if let parameters = parameters {
-                for (k, v) in parameters {
-                    let str = v as! String
-                    let strData = str.data(using: String.Encoding.utf8)
-                    
-                    //data 是 v的二进制数据，name是 k
-                    formData.append(strData!, withName: k)
-                }
-            }
-            
-        }, usingThreshold: 5 * 1024 * 1024, to: URLString, method: .post) { (encodingResult) in
-            switch encodingResult {
-                
-            case .success(let request, let streamingFromDisk, let streamFileURL):
-                request.responseJSON(completionHandler: { (response) in
-                    //判断是否失败
-                    if response.result.isFailure {
-                        //开发网络模块，错误不要提示给用户，但错误一定要输出
-                        print("网络请求失败 \(String(describing: response.result.error))")
-                    }
-                    finished(response.result.value, response.result.error)
-                })
-                break
-            case .failure(let error):
-                print("上传文件编码错误 \(error)")
-            }
+        //2 发起网络请求
+        post(URLString, parameters: parameters, constructingBodyWith: { (formData) in
+            /**
+             1 data 要上传的图片二进制,上传文件需限制大小
+             2 name 是服务器定义的字段名称 - 后台接口文档会提示（跟后台要）
+             3 fileName 是保存在服务器的文件名:但是通常可以‘乱写’，后台会做后续处理
+             - 根据上传的文件，生成 缩略图，中等图 高清图
+             - 保存在不同路径，并且生成文件名
+             - fileName 是 http协议定义的属性
+             4 mineType / contentType：是客服端告诉服务器，二进制数据的准确类型
+             - 大类型/小类型 eg：
+             *image/jpg image/gif image/png
+             *text/plain text/html
+             *application/json
+             - 格式无需记忆
+             - 如果不想告诉服务器准确的类型,可以使用
+             * application/octet-stream (二进制流,告诉服务器不用管什么类型，直接存储就行)
+             
+             */
+            formData.appendPart(withFileData: data , name: name, fileName: "xxx", mimeType:"application/octet-stream" )
+        }, progress: nil, success: { (_, result) in
+            finished(result, nil)
+        }) { (_, error) in
+            print(error)
+            finished(nil, error)
         }
-//        post(URLString, parameters: parameters, constructingBodyWith: { (formData) in
-//            /**
-//             1 data 要上传的图片二进制,上传文件需限制大小
-//             2 name 是服务器定义的字段名称 - 后台接口文档会提示（跟后台要）
-//             3 fileName 是保存在服务器的文件名:但是通常可以‘乱写’，后台会做后续处理
-//                - 根据上传的文件，生成 缩略图，中等图 高清图
-//                - 保存在不同路径，并且生成文件名
-//                - fileName 是 http协议定义的属性
-//             4 mineType / contentType：是客服端告诉服务器，二进制数据的准确类型
-//                - 大类型/小类型 eg：
-//                                *image/jpg image/gif image/png
-//                                *text/plain text/html
-//                                *application/json
-//                - 格式无需记忆
-//                - 如果不想告诉服务器准确的类型,可以使用
-//                   * application/octet-stream (二进制流,告诉服务器不用管什么类型，直接存储就行)
-//
-//             */
-//            formData.appendPart(withFileData: data , name: name, fileName: "xxx", mimeType:"application/octet-stream" )
-//        }, progress: nil, success: { (_, result) in
-//            finished(result, nil)
-//        }) { (_, error) in
-//            print(error)
-//            finished(nil, error)
-//        }
     }
 }
+
 
 
 

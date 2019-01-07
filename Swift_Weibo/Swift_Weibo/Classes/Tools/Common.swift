@@ -28,3 +28,12 @@ let StatusCellMargin: CGFloat = 15
 /// 微博头像宽度
 let StatusCellIconWidth:CGFloat = 35
 
+func printLogDebug<T>(message:T,
+                      file: String = #file,
+                      method: String = #function,
+                      line: Int = #line
+    ) {
+    #if DEBUG
+    print("\(file)\r\n \(method)\r\n \(line)\r\n \(message)")
+    #endif
+}

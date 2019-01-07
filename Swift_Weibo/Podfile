@@ -9,6 +9,7 @@ pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'SnapKit'
 pod 'Alamofire'
+pod 'QorumLogs'
 
   # Pods for Swift_Weibo
 
