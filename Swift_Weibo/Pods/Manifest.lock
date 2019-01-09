@@ -15,29 +15,36 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Alamofire (4.7.3)
+  - FLAnimatedImage (1.0.12)
   - QorumLogs (0.9)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
+  - SDWebImage/GIF (4.4.1):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking
   - Alamofire
+  - FLAnimatedImage
   - QorumLogs
   - SDWebImage
+  - SDWebImage/GIF
   - SnapKit
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   QorumLogs: 9a484df6973a3697ac79fe2273140fde6b36dccc
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: db96d8aa26347b47f1cd280dae88c2886f6f8bd1
+PODFILE CHECKSUM: 0cfbd8e487b37ea4e176f9be83451c0f1da6ced4
 
 COCOAPODS: 1.4.0

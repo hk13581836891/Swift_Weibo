@@ -96,7 +96,10 @@ class StatusViewModel:CustomStringConvertible {
             for dict in urls {
                 
                 //因为字典时按照 key来取值，如果 key错误，会返回 nil,此处强行解包是要求服务器返回的 key不出错
+//                let ss = "https://wx4.sinaimg.cn/woriginal/835eb1a0gy1fywybfinmzg20dw06oe6x.gif"
+//                let url = URL(string: ss)
                 let url = URL(string: dict["thumbnail_pic"]!)
+                
                 //此处强行解包是要求服务器返回的 url字符串一定能够生成 URL
                 thumbnailUrls?.append(url!)
             }

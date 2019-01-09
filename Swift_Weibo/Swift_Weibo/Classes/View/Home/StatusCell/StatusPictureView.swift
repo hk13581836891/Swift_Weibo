@@ -193,6 +193,10 @@ private class StatusPictureViewCell : UICollectionViewCell {
                 options: [SDWebImageOptions.retryFailed , //SD超时时长15s,一旦超时会记入黑名单，下次不再下载，而retryFailed则是让下载失败的图片不计入黑名单,失败后会再次请求下载
                  SDWebImageOptions.refreshCached],//如果 URL 不变，图片变了，则能及时请求新图片，而不用缓存旧图片
                                 completed: nil)
+            
+            //根据文件的扩展名判断是否是 gif,但不是所有的gif都会动
+            let path = (imgurl!.absoluteString as NSString).pathExtension.lowercased()
+            gifIconView.isHidden = (path != "gif")
         }
     }
     
@@ -207,10 +211,15 @@ private class StatusPictureViewCell : UICollectionViewCell {
     
     func setupUI() {
         contentView.addSubview(imgView)
+        imgView.addSubview(gifIconView)
         //需要设置自动布局- 提示：因为 cell会变化，另外，不同的 cell大小可能不一样
         imgView.snp.makeConstraints { (make) in
 //            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0)) 以下二者效果一样
             make.edges.equalTo(contentView.snp.edges)
+        }
+        gifIconView.snp.makeConstraints { (make) in
+            make.right.equalTo(imgView)
+            make.bottom.equalTo(imgView)
         }
     }
     // MARK: - 懒加载控件
@@ -222,6 +231,8 @@ private class StatusPictureViewCell : UICollectionViewCell {
         imgView.clipsToBounds = true
         return imgView
     }()
+    //GIF 提示图片
+    private lazy var gifIconView:UIImageView = UIImageView(imageName: "timeline_image_gif")
 }
 
 

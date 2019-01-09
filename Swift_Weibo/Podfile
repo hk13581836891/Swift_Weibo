@@ -6,7 +6,7 @@ target 'Swift_Weibo' do
   use_frameworks!
 pod 'AFNetworking'
 pod 'SDWebImage'
-pod 'SVProgressHUD'
+pod 'SDWebImage/GIF'
 pod 'SnapKit'
 pod 'Alamofire'
 pod 'QorumLogs'
@@ -14,3 +14,4 @@ pod 'QorumLogs'
   # Pods for Swift_Weibo
 
 end
+

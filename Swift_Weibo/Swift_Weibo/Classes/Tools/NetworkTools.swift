@@ -113,7 +113,7 @@ extension NetworkTools {
                       "code":code,
                       "redirect_uri":reDirectUrl]
         
-        request(method: .get, URLString: urlString, parameters: params, finished: finish)
+        request(method: .post, URLString: urlString, parameters: params, finished: finish)
     }
 }
 
