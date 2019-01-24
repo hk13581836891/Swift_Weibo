@@ -18,7 +18,8 @@ class StatusCell: UITableViewCell {
         didSet{
             topView.viewModel = viewModel
             
-            contentLab.text = viewModel?.status.text
+            let text = viewModel?.status.text ?? ""
+            contentLab.attributedText = HKEmoticonManager.sharedManager.emoticonText(string: text, font: contentLab.font)
             
             pictureView.viewModel = viewModel
             pictureView.snp.updateConstraints { (make) in

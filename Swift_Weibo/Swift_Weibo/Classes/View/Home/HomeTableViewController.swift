@@ -19,6 +19,13 @@ class HomeTableViewController: VisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Date.sinaDate(string: "Thu Jan 17 16:29:49 +0800 2019")?.dateDescription as Any)
+        print(Date.sinaDate(string: "Thu Jan 17 16:10:49 +0800 2019")?.dateDescription as Any)
+        print(Date.sinaDate(string: "Thu Jan 17 11:52:49 +0800 2019")?.dateDescription as Any)
+        
+        print(Date.sinaDate(string: "Thu Jan 16 11:52:49 +0800 2019")?.dateDescription as Any)
+        print(Date.sinaDate(string: "Thu Oct 30 11:52:49 +0800 2018")?.dateDescription as Any)
+        print(Date.sinaDate(string: "Thu Jan 10 11:52:49 +0800 2018")?.dateDescription as Any)
         
         if !UserAccountViewModel.sharedUserAccount.userLogon {
             visitorView?.setupInfo(imageName: nil, title: "关注一些人，回这里看看有什么惊喜")

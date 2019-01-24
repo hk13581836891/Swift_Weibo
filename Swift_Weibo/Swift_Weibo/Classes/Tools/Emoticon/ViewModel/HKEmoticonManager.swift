@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //MARK: - 表情包视图模型 - 对应的是emoticons.plist
 /**
@@ -33,6 +34,73 @@ class HKEmoticonManager {
     //MARK: - 构造函数 构造函数私有化，在单例中防止外部直接使用构造函数（可能会多次使用，多次创建）
     private init() {
         loadPlist()
+    }
+    
+    //MARK: - 生成属性字符串
+    ///将字符串转换成属性字符串
+    func emoticonText(string: String, font:UIFont) -> NSAttributedString {
+        let strM = NSMutableAttributedString(string: string)
+        
+        //1 准备正则表达式[] 是正则表达式关键字，需要转义
+        let pattern = "\\[.*?\\]"
+        
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        
+        //2 匹配多项内容
+        let results = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
+        //3 得到匹配的数量
+        var count = results.count
+        
+        print(count)
+        
+        //4 倒着遍历查找到的范围
+        /**
+         如果正着遍历，一旦替换了前面的内容，后面的 range 响应都会发生变化
+         倒着遍历 - 第一次匹配的所有 range都有效
+         */
+        while count > 0 {
+            count = count - 1
+            let range = results[count].range(at: 0)
+            
+            //1 从字符串中获取表情子串
+            let emStr = (string as NSString).substring(with: range)
+            // 2 根据 emStr 查找对应的表情模型
+            if let em = emoticonWithString(string: emStr) {
+                //3 根据 em建立一个图片属性文本
+                let attrText = EmoticonAttachment(emoticon: em).imageText(font: font)
+                
+                //替换属性字符串中的内容
+                strM.replaceCharacters(in: range, with: attrText)
+                print(attrText)
+            }
+            print(range)
+        }
+        
+        return strM
+        
+    }
+    
+    /// 根据表情字符串，在表情包中查找对应的表情
+    ///
+    /// - Parameter string: 表情字符串
+    /// - Returns: 表情模型
+    private func emoticonWithString(string:String) -> HKEmoticon? {
+        //遍历表情包数组
+        for package in packages {
+            //过滤emoticons数组，查找 em.chs == string 的表情模型
+            //filter过滤函数，返回值为符合条件的数组
+            //1 如果闭包有返回值，闭包代码只有一句，可以省略 return
+            //2 如果有参数，参数可以使用$0 $1..替代
+            //3 $0对应的就是数组中的元素
+            let emoticon = package.emoticons.filter {$0.chs == string}.last
+            //            let emoticon = package.emoticons.filter { (em) -> Bool in
+            //                em.chs == string
+            //                }.last
+            if emoticon != nil{
+                return emoticon;
+            }
+        }
+        return nil;
     }
     
     //从 emoticons.plist 加载表情包数据

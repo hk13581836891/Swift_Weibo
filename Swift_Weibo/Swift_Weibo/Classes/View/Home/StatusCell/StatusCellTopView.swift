@@ -18,9 +18,8 @@ class StatusCellTopView: UIView {
             iconView.setImageWith((viewModel?.userIconUrl)!, placeholderImage: viewModel?.userDefaultImage)
             memberImg.image = viewModel?.userMemberImage
             vipImg.image = viewModel?.userVipImage
-            //TODO: - 后续
-//            timeLab.text = viewModel?.status.created_at
-//            sourceLab.text = viewModel?.status.source
+            timeLab.text = viewModel?.creatAt
+            sourceLab.text = viewModel?.status.source//来源
         }
     }
     

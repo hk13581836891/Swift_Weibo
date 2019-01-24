@@ -16,7 +16,8 @@ class StatusRetweetedCell: StatusCell {
     override var viewModel:StatusViewModel? {
         didSet{
             //转发微博的文字
-            retweetedLabel.text = viewModel?.retweetedText
+            let text = viewModel?.retweetedText ?? ""
+            retweetedLabel.attributedText = HKEmoticonManager.sharedManager.emoticonText(string: text, font: retweetedLabel.font)
             
             pictureView.snp.updateConstraints { (make) in
                 //如果没有配图，顶部间距设为0

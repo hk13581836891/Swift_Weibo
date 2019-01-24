@@ -32,6 +32,11 @@ class StatusViewModel:CustomStringConvertible {
         return cell.rowHeigth(vm: self)
     }()
     
+    //微博发布日期
+    var creatAt:String?{
+        return Date.sinaDate(string: status.created_at ?? "")?.dateDescription
+    }
+    
     /// 用户头像 URL
     var userIconUrl:URL {
         return URL(string: (status.user?.profile_image_url) ?? "")!

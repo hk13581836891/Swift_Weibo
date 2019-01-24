@@ -18,7 +18,12 @@ import UIKit
     /// 微博创建时间
     var created_at:String?
     /// 微博来源
-    var source:String?
+    var source:String?{
+        didSet {
+            //过滤出文本，并且重新设置 source
+            source = source?.href()?.text
+        }
+    }
     /// 缩略图配图数组 key:thumbnail_pic
     var pic_urls:[[String: String]]?
     
