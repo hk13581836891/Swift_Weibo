@@ -10,10 +10,21 @@ import UIKit
 
 /// 底部视图
 class StatusCellBottomView: UIView {
+    
+    //MARK: 微博视图模型
+    var viewModel:StatusViewModel?
 
+    @objc private func retweetedBtnClick()  {
+        
+        
+        print("retweetedBtnClick")
+        let vc = TestViewController()
+        viewModel?.retweetedBtnClick()
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        retweetedBtn.addTarget(self, action: #selector(retweetedBtnClick), for: UIControlEvents.touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {

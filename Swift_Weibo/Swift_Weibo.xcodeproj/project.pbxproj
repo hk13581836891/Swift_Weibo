@@ -48,12 +48,16 @@
 		D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A5D33213E899D00DD9552 /* Dispatch.swift */; };
 		D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */; };
 		D39CD4FE2140D3A900C0A289 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FD2140D3A900C0A289 /* User.swift */; };
-		D39CD5002140DC8400C0A289 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */; };
 		D39CD50421412D5C00C0A289 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50321412D5C00C0A289 /* StatusCell.swift */; };
 		D39CD50621412D7400C0A289 /* StatusCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50521412D7400C0A289 /* StatusCellTopView.swift */; };
 		D39CD50821412D8600C0A289 /* StatusCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */; };
 		D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */; };
 		D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */; };
+		D3A59CDF21F9B39000343B38 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A59CDE21F9B39000343B38 /* TestViewController.swift */; };
+		D3A59CE121F9B8B800343B38 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A59CE021F9B8B800343B38 /* ReactiveCocoa.framework */; };
+		D3A59CE321F9B8C500343B38 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A59CE221F9B8C500343B38 /* ReactiveSwift.framework */; };
+		D3A59CE521F9B8CA00343B38 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A59CE421F9B8CA00343B38 /* Result.framework */; };
+		D3A59CE721F9C67500343B38 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A59CE621F9C67500343B38 /* StatusViewModel.swift */; };
 		D3B32D42218AEA9E00E4CE9D /* StatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B32D41218AEA9D00E4CE9D /* StatusNormalCell.swift */; };
 		D3B73199213911E80031C676 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B73198213911E80031C676 /* NewFeatureViewController.swift */; };
 		D3B8B43F21A7E3A200B71409 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8B43E21A7E3A100B71409 /* UIImage+Extension.swift */; };
@@ -114,12 +118,16 @@
 		D39A5D33213E899D00DD9552 /* Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		D39CD4FD2140D3A900C0A289 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		D39CD50321412D5C00C0A289 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		D39CD50521412D7400C0A289 /* StatusCellTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellTopView.swift; sourceTree = "<group>"; };
 		D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellBottomView.swift; sourceTree = "<group>"; };
 		D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		D3A59CDE21F9B39000343B38 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		D3A59CE021F9B8B800343B38 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A59CE221F9B8C500343B38 /* ReactiveSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A59CE421F9B8CA00343B38 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A59CE621F9C67500343B38 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		D3B32D41218AEA9D00E4CE9D /* StatusNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCell.swift; sourceTree = "<group>"; };
 		D3B73198213911E80031C676 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
 		D3B8B43E21A7E3A100B71409 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -136,6 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A59CE521F9B8CA00343B38 /* Result.framework in Frameworks */,
+				D3A59CE321F9B8C500343B38 /* ReactiveSwift.framework in Frameworks */,
+				D3A59CE121F9B8B800343B38 /* ReactiveCocoa.framework in Frameworks */,
 				D698A04B6ACF6E0CD092586A /* Pods_Swift_Weibo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +157,9 @@
 		64FDC8F2E3A303B5D2BD2535 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3A59CE421F9B8CA00343B38 /* Result.framework */,
+				D3A59CE221F9B8C500343B38 /* ReactiveSwift.framework */,
+				D3A59CE021F9B8B800343B38 /* ReactiveCocoa.framework */,
 				C1A1E5B17873A5FC68CC2D45 /* Pods_Swift_Weibo.framework */,
 			);
 			name = Frameworks;
@@ -196,7 +210,7 @@
 			children = (
 				D30AACDA2137E90800EE37FD /* UserAccountViewModel.swift */,
 				D39CD4FB2140CEB700C0A289 /* StatusListViewModel.swift */,
-				D39CD4FF2140DC8400C0A289 /* StatusViewModel.swift */,
+				D3A59CE621F9C67500343B38 /* StatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -390,6 +404,7 @@
 				D39CD50521412D7400C0A289 /* StatusCellTopView.swift */,
 				D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */,
 				D3BC80AA214769B600A0DDA9 /* StatusPictureView.swift */,
+				D3A59CDE21F9B39000343B38 /* TestViewController.swift */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";
@@ -439,7 +454,6 @@
 				D3934D75212A66FA00C7886D /* Frameworks */,
 				D3934D76212A66FA00C7886D /* Resources */,
 				E2EB8FA4C65F7B41236EFD62 /* [CP] Embed Pods Frameworks */,
-				04DB62F0BD794307C3EF51AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -498,21 +512,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04DB62F0BD794307C3EF51AE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swift_Weibo/Pods-Swift_Weibo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		50715904A4D78788B5835EFF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,8 +539,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Swift_Weibo/Pods-Swift_Weibo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FFLabel/FFLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/QorumLogs/QorumLogs.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -550,8 +555,14 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QorumLogs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -580,10 +591,10 @@
 				D38EC68521F8400D007D6218 /* String+Regex.swift in Sources */,
 				D35F5A3021D2021900D82DB2 /* HKPhotoBrowserAnimator.swift in Sources */,
 				D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */,
-				D39CD5002140DC8400C0A289 /* StatusViewModel.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
 				D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */,
 				D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */,
+				D3A59CDF21F9B39000343B38 /* TestViewController.swift in Sources */,
 				D39CD50421412D5C00C0A289 /* StatusCell.swift in Sources */,
 				D366C67E21E30238000A140D /* NetworkToolsAFN.swift in Sources */,
 				D345355F212FF201000E9BC7 /* Swift_OCHybrid.m in Sources */,
@@ -602,6 +613,7 @@
 				D38C66D521C34F29009D5B1C /* HKPhotoBrowserProgressImageView.swift in Sources */,
 				D3037FE321A4FB43003687D5 /* String+Emoji.swift in Sources */,
 				D35C902A212BE6020096BFF6 /* VisitorTableViewController.swift in Sources */,
+				D3A59CE721F9C67500343B38 /* StatusViewModel.swift in Sources */,
 				D3934DA2212AA29C00C7886D /* MessageTableViewController.swift in Sources */,
 				D3961D7321B7A18700D28564 /* HKPhotoBrowserCell.swift in Sources */,
 				D3961D7121B7767B00D28564 /* HKPhotoBrowserViewController.swift in Sources */,

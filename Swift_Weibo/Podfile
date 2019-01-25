@@ -10,6 +10,10 @@ pod 'SDWebImage/GIF'
 pod 'SnapKit'
 pod 'Alamofire'
 pod 'QorumLogs'
+pod 'SVProgressHUD'
+pod 'FFLabel'
+pod 'ReactiveCocoa', '~> 8.0'
+pod 'RxSwift'
 
   # Pods for Swift_Weibo
 

@@ -2,16 +2,17 @@
 //  StatusViewModel.swift
 //  Swift_Weibo
 //
-//  Created by houke on 2018/9/6.
-//  Copyright © 2018年 houke. All rights reserved.
+//  Created by houke on 2019/1/24.
+//  Copyright © 2019年 houke. All rights reserved.
 //
 
 import UIKit
+import ReactiveCocoa
 
 /// 微博视图模型 - 处理单条微博的业务逻辑
-
 /// 视图模型继承CustomStringConvertible 为了打印描述信息
-class StatusViewModel:CustomStringConvertible {
+class StatusViewModel: NSObject{
+    
     /// 微博的模型
     var status:Status
     
@@ -25,7 +26,7 @@ class StatusViewModel:CustomStringConvertible {
         //计算行高
         var cell:StatusCell
         if self.status.retweeted_status != nil {
-             cell = StatusRetweetedCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusRetweetedCell.self)")
+            cell = StatusRetweetedCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusRetweetedCell.self)")
         }else{
             cell = StatusNormalCell(style: UITableViewCellStyle.default, reuseIdentifier: "\(StatusNormalCell.self)")
         }
@@ -82,7 +83,7 @@ class StatusViewModel:CustomStringConvertible {
         guard let s = status.retweeted_status else {
             return nil
         }
-//        status.retweeted_status.
+        //        status.retweeted_status.
         //2\ s就是转发微博
         print("@\(s.user?.screen_name ?? "")：\(s.text ?? "")");
         return "@\(s.user?.screen_name ?? "")：\(s.text ?? "")"
@@ -101,8 +102,8 @@ class StatusViewModel:CustomStringConvertible {
             for dict in urls {
                 
                 //因为字典时按照 key来取值，如果 key错误，会返回 nil,此处强行解包是要求服务器返回的 key不出错
-//                let ss = "https://wx4.sinaimg.cn/woriginal/835eb1a0gy1fywybfinmzg20dw06oe6x.gif"
-//                let url = URL(string: ss)
+                //                let ss = "https://wx4.sinaimg.cn/woriginal/835eb1a0gy1fywybfinmzg20dw06oe6x.gif"
+                //                let url = URL(string: ss)
                 let url = URL(string: dict["thumbnail_pic"]!)
                 
                 //此处强行解包是要求服务器返回的 url字符串一定能够生成 URL
@@ -112,16 +113,14 @@ class StatusViewModel:CustomStringConvertible {
     }
     
     /// 描述信息
-    var description: String {
-
-        return status.description
-    }
-
+//    var description: String {
+//
+//        return status.description
+//    }
+    
+    //MARK: - rac方法
+    @objc func retweetedBtnClick() {}
 }
-
-
-
-
 
 
 

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 ///微博 cell
 class StatusCell: UITableViewCell {
     
@@ -17,6 +16,7 @@ class StatusCell: UITableViewCell {
     var viewModel:StatusViewModel? {
         didSet{
             topView.viewModel = viewModel
+            bottomView.viewModel = viewModel
             
             let text = viewModel?.status.text ?? ""
             contentLab.attributedText = HKEmoticonManager.sharedManager.emoticonText(string: text, font: contentLab.font)

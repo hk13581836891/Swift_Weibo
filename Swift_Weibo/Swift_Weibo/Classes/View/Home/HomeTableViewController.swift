@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import ReactiveCocoa
+//import ReactiveObjCBridge
 
 /// 微博 cell可重用标识符
 private let StatusCellNormalId = "StatusCellNormalId"
@@ -31,8 +33,20 @@ class HomeTableViewController: VisitorTableViewController {
             visitorView?.setupInfo(imageName: nil, title: "关注一些人，回这里看看有什么惊喜")
             return
         }
-        self.prepareTableView()
-        self.loadData()
+        prepareTableView()
+        loadData()
+        clickEvent()
+        
+//
+//        let tv1 = UITextField(frame: CGRect(x: 50, y: 50, width: 200, height: 30))
+//        tv1.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+//        tv1.placeholder = "用户名"
+//        view.addSubview(tv1)
+//
+//        tv1.reactive.signal(for: <#T##Selector#>)
+//        tv1.rac_textSignal().subscribeNext { (text) in
+//            print(text)
+//        }
         
         //注册通知 - 如果使用 block监听，一定需要弱引用
         NotificationCenter.default.addObserver(forName: NSNotification.Name(WBStatusSelectedPhotoNotification), object: nil, queue: nil) { [weak self](n) in
@@ -166,7 +180,6 @@ extension HomeTableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusNormalCell.self)", for: indexPath) as! StatusCell
         }
         cell.viewModel = vm
-        
         //判断是否最后一条微博
         if indexPath.row == listViewModel.statusList.count - 1 && !pullupView.isAnimating {
             //开始动画
@@ -222,6 +235,10 @@ extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath)")
+        
+    }
+    //MARK:- 响应事件
+    func clickEvent() {
         
     }
 }
