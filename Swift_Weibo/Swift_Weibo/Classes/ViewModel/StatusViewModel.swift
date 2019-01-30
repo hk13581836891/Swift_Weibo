@@ -7,11 +7,15 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import RxSwift
+import RxCocoa
 
 /// 微博视图模型 - 处理单条微博的业务逻辑
 /// 视图模型继承CustomStringConvertible 为了打印描述信息
 class StatusViewModel: NSObject{
+    
+    let disposeBag = DisposeBag.init()
+    let validateSubject = PublishSubject<String>()
     
     /// 微博的模型
     var status:Status
@@ -119,33 +123,7 @@ class StatusViewModel: NSObject{
 //    }
     
     //MARK: - rac方法
-    @objc func retweetedBtnClick() {}
+    func retweetedBtnClick(){
+        validateSubject.onNext("retweetedBtnClick")
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

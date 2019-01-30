@@ -14,6 +14,7 @@ pod 'SVProgressHUD'
 pod 'FFLabel'
 pod 'ReactiveCocoa', '~> 8.0'
 pod 'RxSwift'
+pod 'RxCocoa'
 
   # Pods for Swift_Weibo
 

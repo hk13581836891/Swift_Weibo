@@ -24,6 +24,8 @@ PODS:
     - Result (~> 4.0)
   - Result (4.1.0)
   - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - SDWebImage (4.4.1):
@@ -41,6 +43,7 @@ DEPENDENCIES:
   - FFLabel
   - QorumLogs
   - ReactiveCocoa (~> 8.0)
+  - RxCocoa
   - RxSwift
   - SDWebImage
   - SDWebImage/GIF
@@ -58,6 +61,7 @@ SPEC REPOS:
     - ReactiveSwift
     - Result
     - RxAtomic
+    - RxCocoa
     - RxSwift
     - SDWebImage
     - SnapKit
@@ -73,11 +77,12 @@ SPEC CHECKSUMS:
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: db4c83825b523240fe261826b4fee6fe39800850
+PODFILE CHECKSUM: 79ee62642085b3ae04cfe05e335a9a00f273838f
 
 COCOAPODS: 1.5.3

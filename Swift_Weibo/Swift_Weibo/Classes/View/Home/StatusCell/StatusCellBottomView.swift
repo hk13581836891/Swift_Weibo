@@ -15,11 +15,7 @@ class StatusCellBottomView: UIView {
     var viewModel:StatusViewModel?
 
     @objc private func retweetedBtnClick()  {
-        
-        
-        print("retweetedBtnClick")
-        let vc = TestViewController()
-        viewModel?.retweetedBtnClick()
+       viewModel?.retweetedBtnClick()
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

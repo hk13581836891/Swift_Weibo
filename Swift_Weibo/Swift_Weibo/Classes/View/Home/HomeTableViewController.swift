@@ -9,7 +9,9 @@
 import UIKit
 import SVProgressHUD
 import ReactiveCocoa
-//import ReactiveObjCBridge
+import RxSwift
+import RxAtomic
+import RxCocoa
 
 /// 微博 cell可重用标识符
 private let StatusCellNormalId = "StatusCellNormalId"
@@ -21,6 +23,112 @@ class HomeTableViewController: VisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//                let disposeBag = DisposeBag()
+        
+//        let btn:UIButton = UIButton()
+//        let observer:Binder<String> = Binder(btn) { (btn, text) in
+//
+//        }
+//
+//        let observable = Observable<Int>.timer(1, period: 1, scheduler: MainScheduler.instance)
+//        observable.map { (n) -> String in
+//            return "当前索引是\(n)"
+//            }.bind { (_) in
+//                btn.isEnabled
+//        }
+        
+//        //这个block有一个回调参数observer就是订阅这个Observable对象的订阅者
+//        //当一个订阅者订阅这个Observable对象的时候，就会将订阅者作为参数传入这个block来执行一些内容
+//        let observable = Observable<String>.create{observer in
+//            //对订阅者发出了.next事件，且携带了一个数据"hangge.com"
+//            observer.onNext("hangge.com")
+////            //对订阅者发出了.completed事件
+////            observer.onCompleted()
+////            //因为一个订阅行为会有一个Disposable类型的返回值，所以在结尾一定要returen一个Disposable
+//            return Disposables.create()
+//            }.subscribe{
+//                print($0)
+//        }
+        
+//        let o = Observable.generate(initialState: 0, condition: { (n) -> Bool in
+//            n <= 10
+//        }) { (m) -> Int in
+//            m+3
+//            }.subscribe(onNext: { (n) in
+//                print(n)
+//            })
+//
+//        let observable = Observable.generate(
+//             initialState: 0,
+//            condition: { $0 <= 10 },
+//             iterate: { $0 + 2 }
+//            ).subscribe(onNext: { (n) in
+//                print(n)
+//            })
+        
+        
+                //Observable序列（每隔1秒钟发出一个索引数）
+//                let observable = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+        //        let ob = Observable.of("a")
+//               let r  = observable.map { print("当前索引数：\($0 )")}
+//        print(r)
+        //        observable
+        //            .map { "当前索引数：\($0 )"}
+        //            .bind { [weak self](text) in
+        //                //收到发出的索引数后显示到label上
+        //                self?.label.text = text
+        //            }
+        //            .disposed(by: disposeBag)
+//    }
+    
+    /*
+     let observable = Observable.of("a", "b", "c")
+     
+     observable
+     .do(onNext: { element in
+     print("Intercepted Next：", element)
+     }, onError: { error in
+     print("Intercepted Error：", error)
+     }, onCompleted: {
+     print("Intercepted Completed")
+     }, onDispose: {
+     print("Intercepted Disposed")
+     })
+     .subscribe(onNext: { element in
+     print(element)
+     }, onError: { error in
+     print(error)
+     }, onCompleted: {
+     print("completed")
+     }, onDisposed: {
+     print("disposed")
+     })
+     
+     let r = observable.subscribe(onNext: { (element) in
+     print(element)
+     }, onError: { (error) in
+     print(error)
+     }, onCompleted: {
+     print("complete")
+     }) {
+     print("disposed")
+     }
+     print(r)
+     print("--------")
+     
+     let r1 = observable.subscribe(onNext: { (element) in
+     print(element)
+     })
+     print(r1)
+     
+     
+     observable.subscribe { (event) in
+     print(event)
+     }.disposed(by: disposeBag)
+     //        print(res)
+     */
+    
+
         print(Date.sinaDate(string: "Thu Jan 17 16:29:49 +0800 2019")?.dateDescription as Any)
         print(Date.sinaDate(string: "Thu Jan 17 16:10:49 +0800 2019")?.dateDescription as Any)
         print(Date.sinaDate(string: "Thu Jan 17 11:52:49 +0800 2019")?.dateDescription as Any)
@@ -180,6 +288,12 @@ extension HomeTableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "\(StatusNormalCell.self)", for: indexPath) as! StatusCell
         }
         cell.viewModel = vm
+        cell.viewModel!.validateSubject.subscribe { (event) in
+            
+            let vc = WebViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: cell.viewModel!.disposeBag)
+        
         //判断是否最后一条微博
         if indexPath.row == listViewModel.statusList.count - 1 && !pullupView.isAnimating {
             //开始动画
