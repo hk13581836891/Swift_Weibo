@@ -290,7 +290,7 @@ extension HomeTableViewController {
         cell.viewModel = vm
         cell.viewModel!.validateSubject.subscribe { (event) in
             
-            let vc = WebViewController()
+            let vc = DetaliViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: cell.viewModel!.disposeBag)
         

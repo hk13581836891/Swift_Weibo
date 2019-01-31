@@ -51,7 +51,8 @@
 		D39CD50421412D5C00C0A289 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50321412D5C00C0A289 /* StatusCell.swift */; };
 		D39CD50621412D7400C0A289 /* StatusCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50521412D7400C0A289 /* StatusCellTopView.swift */; };
 		D39CD50821412D8600C0A289 /* StatusCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */; };
-		D3A0689F2201729D00622AFF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0689E2201729C00622AFF /* WebViewController.swift */; };
+		D3A0689F2201729D00622AFF /* DetaliViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0689E2201729C00622AFF /* DetaliViewController.swift */; };
+		D3A068A122017E5A00622AFF /* ProperyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A068A022017E5A00622AFF /* ProperyLabel.swift */; };
 		D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */; };
 		D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */; };
 		D3A59CDF21F9B39000343B38 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A59CDE21F9B39000343B38 /* TestViewController.swift */; };
@@ -122,7 +123,8 @@
 		D39CD50321412D5C00C0A289 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		D39CD50521412D7400C0A289 /* StatusCellTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellTopView.swift; sourceTree = "<group>"; };
 		D39CD50721412D8600C0A289 /* StatusCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellBottomView.swift; sourceTree = "<group>"; };
-		D3A0689E2201729C00622AFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D3A0689E2201729C00622AFF /* DetaliViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaliViewController.swift; sourceTree = "<group>"; };
+		D3A068A022017E5A00622AFF /* ProperyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProperyLabel.swift; sourceTree = "<group>"; };
 		D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		D3A42D0E213543FD0049A4A0 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		D3A59CDE21F9B39000343B38 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				D3453558212F9F7E000E9BC7 /* SoundTools.swift */,
 				D3A42D072134FAAD0049A4A0 /* NetworkTools.swift */,
 				D366C67D21E30238000A140D /* NetworkToolsAFN.swift */,
+				D3A068A022017E5A00622AFF /* ProperyLabel.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -347,7 +350,7 @@
 				D3CAF41E218C57F60098A8A4 /* RefreshView */,
 				D39CD50221412D3400C0A289 /* StatusCell */,
 				D3934D9F212AA28400C7886D /* HomeTableViewController.swift */,
-				D3A0689E2201729C00622AFF /* WebViewController.swift */,
+				D3A0689E2201729C00622AFF /* DetaliViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				D3A42D082134FAAD0049A4A0 /* NetworkTools.swift in Sources */,
 				D3928322212E8C7500D02D17 /* UILable+Extension.swift in Sources */,
 				D3A42D0F213543FD0049A4A0 /* OAuthViewController.swift in Sources */,
+				D3A068A122017E5A00622AFF /* ProperyLabel.swift in Sources */,
 				D39CD4FC2140CEB700C0A289 /* StatusListViewModel.swift in Sources */,
 				D3A59CDF21F9B39000343B38 /* TestViewController.swift in Sources */,
 				D39CD50421412D5C00C0A289 /* StatusCell.swift in Sources */,
@@ -607,7 +611,7 @@
 				D39A5D34213E899D00DD9552 /* Dispatch.swift in Sources */,
 				D38ED65A21A4066A00F44DE3 /* UIBarButtonItem+Extension.swift in Sources */,
 				D3934DA4212AA2AF00C7886D /* DiscoveryTableViewController.swift in Sources */,
-				D3A0689F2201729D00622AFF /* WebViewController.swift in Sources */,
+				D3A0689F2201729D00622AFF /* DetaliViewController.swift in Sources */,
 				D39CD50821412D8600C0A289 /* StatusCellBottomView.swift in Sources */,
 				D3992E0C213FCE7200A95554 /* Status.swift in Sources */,
 				D3928326212EB61500D02D17 /* Common.swift in Sources */,
@@ -767,7 +771,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UMV2F5U78P;
+				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -791,7 +795,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UMV2F5U78P;
+				DEVELOPMENT_TEAM = 3HLB9VXZD6;
 				INFOPLIST_FILE = Swift_Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

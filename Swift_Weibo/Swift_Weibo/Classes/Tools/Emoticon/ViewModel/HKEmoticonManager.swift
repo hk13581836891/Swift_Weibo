@@ -30,6 +30,29 @@ class HKEmoticonManager {
     //表情包模型
     lazy var packages = [HKEmoticonPackage]()
     
+    //MARK: - 最近表情
+    //添加最近表情 -> 表情添加到 packages[0]的表情数组 (仅是内存排序)
+    func addFavorite(em:HKEmoticon){
+    
+        //0表情次数+1
+        em.times = em.times + 1 
+        //1 判断表情是否被添加
+        if !packages[0].emoticons.contains(em) {
+            
+            print(packages[0].emoticons)
+            packages[0].emoticons.insert(em, at: 0)
+            
+            //删除倒数第二个按钮
+            packages[0].emoticons.remove(at: packages[0].emoticons.count - 2)
+        }
+        //2排序数组
+//        packages[0].emoticons.sort { (em1, em2) -> Bool in
+//            em1.times > em2.times
+//        }
+        //排序数组 尾随闭包
+        packages[0].emoticons.sort {$0.times > $1.times}
+        
+    }
     
     //MARK: - 构造函数 构造函数私有化，在单例中防止外部直接使用构造函数（可能会多次使用，多次创建）
     private init() {

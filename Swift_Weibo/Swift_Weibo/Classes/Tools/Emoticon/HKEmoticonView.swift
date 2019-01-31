@@ -112,7 +112,7 @@ private extension HKEmoticonView {
     
     //准备 collectionview
     func prepareCollectionView()  {
-        collectionView.backgroundColor = UIColor.lightGray
+        collectionView.backgroundColor = UIColor.white
         
         //注册 cell
         collectionView.register(EmojiViewCell.self, forCellWithReuseIdentifier: "\(EmojiViewCell.self)")
@@ -137,6 +137,12 @@ extension HKEmoticonView:UICollectionViewDataSource, UICollectionViewDelegate {
         let em = packages[indexPath.section].emoticons[indexPath.item]
         //执行’回调‘
         selectedEmoticonCallBack(em)
+        
+        //添加最近表情
+        //第0个分组不参加排序
+        if indexPath.section > 0 {
+            HKEmoticonManager.sharedManager.addFavorite(em: em)
+        }
     }
     
     //返回分组数量 - 表情包的数量

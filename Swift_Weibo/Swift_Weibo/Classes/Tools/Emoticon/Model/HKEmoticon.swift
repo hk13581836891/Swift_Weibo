@@ -38,6 +38,10 @@ import UIKit
     //是否空白按钮标记
     var isEmpty = false
     
+    /// 表情使用次数
+    var times = 0
+    
+    
     init(isEmpty: Bool){
         self.isEmpty = isEmpty
         super.init()
@@ -57,7 +61,7 @@ import UIKit
     }
     
     override var description: String{
-        let keys = ["chs","png", "code", "isRemoved"]
+        let keys = ["chs","png", "code", "isRemoved", "times"]
         return dictionaryWithValues(forKeys: keys).description
     }
 }
